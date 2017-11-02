@@ -1,4 +1,4 @@
-package com.avd.kotlin_rss.presentation.base
+package com.avd.checker.presentation.base
 
 import android.support.v7.widget.RecyclerView
 import android.view.View

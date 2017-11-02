@@ -1,4 +1,4 @@
-package com.avd.kotlin_rss.presentation.base
+package com.avd.checker.presentation.base
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
