@@ -1,0 +1,4 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/lightPrimary">
+    <item android:drawable="@drawable/shape_pink_button" />
+</ripple>

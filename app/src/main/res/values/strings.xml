@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">checker</string>
+    <string name="settings_item">settings_item</string>
 </resources>
