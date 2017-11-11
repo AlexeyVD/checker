@@ -1,0 +1,25 @@
+package com.avd.checker.di.checkers
+
+import com.avd.checker.presentation.checker_list.CheckerListAdapter
+import com.avd.checker.presentation.presenter.CheckerDetailPresenter
+import com.avd.checker.presentation.presenter.CheckerDetailPresenterImpl
+import com.avd.checker.presentation.presenter.CheckerListPresenter
+import com.avd.checker.presentation.presenter.CheckerListPresenterImpl
+import dagger.Binds
+import dagger.Module
+import dagger.Provides
+
+/**
+ * Created by Aleksey Dementyev on 11.11.2017.
+ */
+
+@Module
+interface CheckersModule {
+    @Binds
+    @CheckerListScope
+    fun provideCheckerListPresenter(presenter: CheckerListPresenterImpl): CheckerListPresenter
+
+    @Binds
+    @CheckerListScope
+    fun provideCheckerDetailPresenter(presenter: CheckerDetailPresenterImpl): CheckerDetailPresenter
+}

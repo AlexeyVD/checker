@@ -12,7 +12,7 @@ import java.util.ArrayList
 
 abstract class BaseAdapter<T, VH : BaseViewHolder<T>> : RecyclerView.Adapter<VH>() {
 
-    private val mElements = ArrayList<T>()
+    protected val mElements = ArrayList<T>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
 
@@ -29,6 +29,7 @@ abstract class BaseAdapter<T, VH : BaseViewHolder<T>> : RecyclerView.Adapter<VH>
 
     fun setElements(elements: Collection<T>) {
         mElements.addAll(elements)
+        notifyDataSetChanged()
     }
 
     protected abstract fun getItemLayoutId(): Int

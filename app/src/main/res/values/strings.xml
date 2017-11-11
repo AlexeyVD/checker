@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">checker</string>
     <string name="settings_item">settings_item</string>
+    <string name="check_item">check_item</string>
+    <string name="periodDescription">Период повторения события</string>
+    <string name="titleDescription">Например: покормить кота</string>
+
+    <string-array name="periods">
+        <item>Час</item>
+        <item>День</item>
+        <item>Неделя</item>
+        <item>Месяц</item>
+    </string-array>
+
 </resources>

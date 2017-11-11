@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/divider"
@@ -32,17 +33,35 @@
         android:paddingEnd="16dp"
         android:paddingRight="16dp"
         android:paddingBottom="80dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/create_button"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:textColor="@color/whiteText"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_yellow_button_ripple"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:text="СОЗДАТЬ ЧЕКЕР"/>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floating_create_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:src="@drawable/ic_add_white_24dp"
+        app:rippleColor="@color/lightAccent"
         android:clickable="true"
         android:focusable="true"
         android:layout_marginBottom="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"/>
 
 </android.support.design.widget.CoordinatorLayout>
