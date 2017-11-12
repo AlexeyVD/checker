@@ -14,6 +14,7 @@ import com.avd.checker.ext.getApp
 import com.avd.checker.ext.gone
 import com.avd.checker.ext.visible
 import com.avd.checker.presentation.base.BaseActivity
+import com.avd.checker.presentation.base.BaseAdapter
 import com.avd.checker.presentation.presenter.CheckerListPresenter
 import com.avd.checker.presentation.view.checker_detail.CheckerDetailActivity
 import kotlinx.android.synthetic.main.activity_checker_list.*
@@ -29,7 +30,8 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
     @Inject
     lateinit var presenter: CheckerListPresenter
 
-    private val adapter = CheckerListAdapter()
+    @Inject
+    lateinit var adapter: BaseAdapter<CheckerModel, CheckerViewHolder>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

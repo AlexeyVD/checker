@@ -1,6 +1,9 @@
 package com.avd.checker.di.checkers
 
+import com.avd.checker.domain.model.CheckerModel
+import com.avd.checker.presentation.base.BaseAdapter
 import com.avd.checker.presentation.checker_list.CheckerListAdapter
+import com.avd.checker.presentation.checker_list.CheckerViewHolder
 import com.avd.checker.presentation.presenter.CheckerDetailPresenter
 import com.avd.checker.presentation.presenter.CheckerDetailPresenterImpl
 import com.avd.checker.presentation.presenter.CheckerListPresenter
@@ -22,4 +25,8 @@ interface CheckersModule {
     @Binds
     @CheckerListScope
     fun provideCheckerDetailPresenter(presenter: CheckerDetailPresenterImpl): CheckerDetailPresenter
+
+    @Binds
+    @CheckerListScope
+    fun provideBaseAdapter(adapter: CheckerListAdapter): BaseAdapter<CheckerModel, CheckerViewHolder>
 }

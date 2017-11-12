@@ -31,6 +31,7 @@ class CheckerListPresenterImpl @Inject constructor(val repository: CheckerReposi
                         mView?.showCreateButton()
                     } else {
                         items.addAll(it)
+                        mView?.hideCreateButton()
                         mView?.setItems(it)
                     }
                     subscribeCheckers()
