@@ -2,8 +2,8 @@ package com.avd.checker.presentation.presenter
 
 import android.util.Log
 import com.avd.checker.di.checkers.CheckerListScope
+import com.avd.checker.domain.checker_list.CheckerListInteractor
 import com.avd.checker.domain.model.CheckerModel
-import com.avd.checker.domain.repository.CheckerRepository
 import com.avd.checker.presentation.base.BasePresenter
 import com.avd.checker.presentation.checker_list.CheckerListView
 import io.reactivex.disposables.Disposable
@@ -14,7 +14,7 @@ import javax.inject.Inject
  */
 
 @CheckerListScope
-class CheckerListPresenterImpl @Inject constructor(val repository: CheckerRepository) :
+class CheckerListPresenterImpl @Inject constructor(val interactor: CheckerListInteractor) :
         BasePresenter<CheckerListView>(), CheckerListPresenter {
 
     companion object {
@@ -25,7 +25,7 @@ class CheckerListPresenterImpl @Inject constructor(val repository: CheckerReposi
     private var checkersSub: Disposable? = null
 
     override fun onStart() {
-        repository.getCheckers()
+        interactor.getCheckers()
                 .subscribe({
                     if (it.isEmpty()) {
                         mView?.showCreateButton()
@@ -42,7 +42,7 @@ class CheckerListPresenterImpl @Inject constructor(val repository: CheckerReposi
         detachView()
         checkersSub?.dispose()
         checkersSub = null
-        repository.unsubscribeCheckers()
+        interactor.unsubscribeCheckers()
     }
 
     override fun onCreateButtonClick() {
@@ -50,7 +50,7 @@ class CheckerListPresenterImpl @Inject constructor(val repository: CheckerReposi
     }
 
     private fun subscribeCheckers() {
-        checkersSub = repository.subscribeCheckers()
+        checkersSub = interactor.subscribeCheckers()
                 .subscribe({
                     if (items.isEmpty()) {
                         mView?.hideCreateButton()
