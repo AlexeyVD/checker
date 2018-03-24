@@ -10,7 +10,7 @@ import javax.inject.Singleton
  * Created by Aleksey Dementyev on 11.11.2017.
  */
 
-@Component(modules = arrayOf(RepositoryModule::class))
+@Component(modules = [(NotificationModule::class), (RepositoryModule::class)])
 @Singleton
 interface AppComponent {
 
@@ -18,6 +18,7 @@ interface AppComponent {
     interface Builder {
         @BindsInstance
         fun context(context: Context): Builder
+        fun notificationModule(notificationModule: NotificationModule): Builder
         fun build(): AppComponent
     }
 

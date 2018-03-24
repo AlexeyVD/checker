@@ -1,5 +1,6 @@
 package com.avd.checker.presentation.checker_list
 
+import android.app.NotificationChannel
 import android.content.Intent
 import android.os.Bundle
 import android.support.transition.Fade
@@ -19,6 +20,12 @@ import com.avd.checker.presentation.presenter.CheckerListPresenter
 import com.avd.checker.presentation.view.checker_detail.CheckerDetailActivity
 import kotlinx.android.synthetic.main.activity_checker_list.*
 import javax.inject.Inject
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.os.Build
+import android.support.v4.app.NotificationCompat
+import com.avd.checker.presentation.notification.NotificationHandler
 
 
 /**
@@ -32,6 +39,9 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
 
     @Inject
     lateinit var adapter: BaseAdapter<CheckerModel, CheckerViewHolder>
+
+    @Inject
+    lateinit var notificationHandler: NotificationHandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +57,7 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
 
     override fun getLayoutId() = R.layout.activity_checker_list
 
-    private fun  initPresenter() {
+    private fun initPresenter() {
         presenter.attachView(this)
         presenter.onStart()
     }
@@ -67,7 +77,7 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
     private fun initRecycler() {
         recycler.layoutManager = LinearLayoutManager(this)
         val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        decoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider_gray))
+        decoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider_gray)!!)
         recycler.addItemDecoration(decoration)
         recycler.adapter = adapter
     }
@@ -100,6 +110,10 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
     }
 
     override fun openDetailActivity() {
+
+        notificationHandler.notify(this, CheckerListActivity::class.java,
+                "Test", "TestMsg", R.drawable.ic_settings_white_24dp)
+
         val intent = Intent(this, CheckerDetailActivity::class.java)
         startActivity(intent)
     }
