@@ -1,5 +1,6 @@
 package com.avd.checker.ext
 
+import com.avd.checker.domain.model.time_data.FixedIntervalTimeData
 import com.avd.checker.domain.model.time_data.TimeData
 import java.util.*
 
@@ -8,8 +9,12 @@ import java.util.*
  */
 
 
-fun TimeData.get(ts: Long, unit: Int): Int {
+fun TimeData.getTimeUnitByLts(lts: Long, timeUnit: Int): Int {
     val calendar = Calendar.getInstance()
-    calendar.timeInMillis = ts
-    return calendar.get(unit)
+    calendar.timeInMillis = lts
+    return calendar.get(timeUnit)
 }
+
+fun createTimeData(period: String): TimeData = FixedIntervalTimeData(3600)
+
+fun lts() = System.currentTimeMillis()

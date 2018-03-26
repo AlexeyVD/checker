@@ -19,6 +19,8 @@ class CheckerRepositoryImpl @Inject constructor() : CheckerRepository {
     private val mCheckers = ArrayList<CheckerModel>()
     private var mEmitter: FlowableEmitter<CheckerModel>? = null
 
+    override fun generateId() = 1
+
     override fun getCheckers(): Single<List<CheckerModel>> = Single.just(ArrayList(mCheckers))
 
     override fun addChecker(checker: CheckerModel) {

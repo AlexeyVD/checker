@@ -31,16 +31,16 @@ class TimeDataExtKtTest {
 
     @Test
     fun getYear() {
-        timeData.get(calendar.timeInMillis, YEAR) shouldEqual Y
+        timeData.getTimeUnitByLts(calendar.timeInMillis, YEAR) shouldEqual Y
     }
 
     @Test
     fun getMonth() {
-        timeData.get(calendar.timeInMillis, MONTH) shouldEqual M
+        timeData.getTimeUnitByLts(calendar.timeInMillis, MONTH) shouldEqual M
     }
 
     @Test
     fun getDay() {
-        timeData.get(calendar.timeInMillis, DAY_OF_MONTH) shouldEqual D
+        timeData.getTimeUnitByLts(calendar.timeInMillis, DAY_OF_MONTH) shouldEqual D
     }
 }

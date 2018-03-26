@@ -7,5 +7,5 @@ import com.avd.checker.domain.model.CheckerModel
  */
 
 interface CheckerDetailInteractor {
-    fun addChecker(checker: CheckerModel)
+    fun addChecker(title: String, period: String)
 }

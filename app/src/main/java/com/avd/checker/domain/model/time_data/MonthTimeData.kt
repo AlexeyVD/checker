@@ -1,6 +1,6 @@
 package com.avd.checker.domain.model.time_data
 
-import com.avd.checker.ext.get
+import com.avd.checker.ext.getTimeUnitByLts
 import java.util.*
 import java.util.Calendar.*
 
@@ -10,7 +10,7 @@ import java.util.Calendar.*
 
 class MonthTimeData : TimeData {
 
-    override fun isExpired(prevLts: Long, lts: Long) = get(prevLts, MONTH) != get(lts, MONTH)
+    override fun isExpired(prevLts: Long, lts: Long) = getTimeUnitByLts(prevLts, MONTH) != getTimeUnitByLts(lts, MONTH)
 
     override fun getTimeRemaining(lts: Long): Long {
         val calendar = Calendar.getInstance()

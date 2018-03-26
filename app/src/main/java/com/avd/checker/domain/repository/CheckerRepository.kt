@@ -9,6 +9,7 @@ import io.reactivex.Single
  */
 
 interface CheckerRepository {
+    fun generateId(): Int
     fun getCheckers(): Single<List<CheckerModel>>
     fun addChecker(checker: CheckerModel)
     fun subscribeCheckers(): Flowable<CheckerModel>

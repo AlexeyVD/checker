@@ -16,7 +16,7 @@ class CheckerDetailPresenterImpl @Inject constructor(val interactor: CheckerDeta
         BasePresenter<CheckerDetailView>(), CheckerDetailPresenter {
 
     override fun createChecker(title: String, period: String) {
-        interactor.addChecker(CheckerModel(title, period, false))
+        interactor.addChecker(title, period)
         mView?.close()
     }
 
