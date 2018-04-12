@@ -24,8 +24,8 @@ class CheckerListPresenterImpl @Inject constructor(val interactor: CheckerListIn
     private var items = ArrayList<CheckerModel>()
     private var checkersSub: Disposable? = null
 
-    override fun onStart() {
-        interactor.getCheckers()
+    override fun onStart(lts: Long) {
+        interactor.getCheckers(lts)
                 .subscribe({
                     if (it.isEmpty()) {
                         mView?.showCreateButton()

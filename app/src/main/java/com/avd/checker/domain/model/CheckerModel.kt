@@ -11,4 +11,13 @@ class CheckerModel (
         var checkerTitle: String,
         var timeData: TimeData,
         var isChecked: Boolean,
-        var periodStartLts: Long)
+        var periodStartLts: Long) {
+
+    fun isExpired(lts: Long) = timeData.isExpired(periodStartLts, lts)
+
+    fun getTimeRemaining(lts: Long) = timeData.getTimeRemaining(lts)
+
+    fun updatePeriod(lts: Long) {
+        periodStartLts = timeData.getPrevTimeUnitLts(lts)
+    }
+}

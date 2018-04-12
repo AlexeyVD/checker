@@ -25,6 +25,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.os.Build
 import android.support.v4.app.NotificationCompat
+import com.avd.checker.ext.lts
 import com.avd.checker.presentation.notification.NotificationHandler
 
 
@@ -59,7 +60,7 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
 
     private fun initPresenter() {
         presenter.attachView(this)
-        presenter.onStart()
+        presenter.onStart(lts())
     }
 
     private fun initButtons() {

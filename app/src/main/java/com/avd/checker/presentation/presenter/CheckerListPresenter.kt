@@ -8,7 +8,19 @@ import com.avd.checker.presentation.checker_list.CheckerListView
  */
 
 interface CheckerListPresenter : Presenter<CheckerListView> {
-    fun onStart()
+
+    /**
+     * Loads list of checkers when app is started
+     */
+    fun onStart(lts: Long)
+
+    /**
+     * Handles app stopping
+     */
     fun onStop()
+
+    /**
+     * Handles click on creating button
+     */
     fun onCreateButtonClick()
 }

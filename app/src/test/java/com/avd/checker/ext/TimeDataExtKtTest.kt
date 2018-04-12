@@ -17,9 +17,9 @@ class TimeDataExtKtTest {
     lateinit var timeData: TimeData
 
     companion object {
-        val Y = 2018
-        val M = 9
-        val D = 11
+        const val Y = 2018
+        const val M = 9
+        const val D = 11
     }
 
     @Before
@@ -31,16 +31,16 @@ class TimeDataExtKtTest {
 
     @Test
     fun getYear() {
-        timeData.getTimeUnitByLts(calendar.timeInMillis, YEAR) shouldEqual Y
+        timeData.getUnitValueByLts(calendar.timeInMillis, YEAR) shouldEqual Y
     }
 
     @Test
     fun getMonth() {
-        timeData.getTimeUnitByLts(calendar.timeInMillis, MONTH) shouldEqual M
+        timeData.getUnitValueByLts(calendar.timeInMillis, MONTH) shouldEqual M
     }
 
     @Test
     fun getDay() {
-        timeData.getTimeUnitByLts(calendar.timeInMillis, DAY_OF_MONTH) shouldEqual D
+        timeData.getUnitValueByLts(calendar.timeInMillis, DAY_OF_MONTH) shouldEqual D
     }
 }
