@@ -1,6 +1,9 @@
 package com.avd.checker.di.application
 
 import com.avd.checker.data.CheckerRepositoryImpl
+import com.avd.checker.data.DataSource
+import com.avd.checker.data.DbCheckersDataSource
+import com.avd.checker.domain.model.CheckerModel
 import com.avd.checker.domain.repository.CheckerRepository
 import dagger.Binds
 import dagger.Module
@@ -16,4 +19,8 @@ interface RepositoryModule {
     @Binds
     @Singleton
     fun provideCheckerRepository(checkerRepository: CheckerRepositoryImpl): CheckerRepository
+
+    @Binds
+    @Singleton
+    fun provideCheckersDataSource(dataSource: DbCheckersDataSource): DataSource<CheckerModel>
 }

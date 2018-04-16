@@ -5,7 +5,7 @@ import com.avd.checker.di.checkers.CheckerListScope
 import com.avd.checker.domain.checker_list.CheckerListInteractor
 import com.avd.checker.domain.model.CheckerModel
 import com.avd.checker.presentation.base.BasePresenter
-import com.avd.checker.presentation.checker_list.CheckerListView
+import com.avd.checker.presentation.view.checker_list.CheckerListView
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 

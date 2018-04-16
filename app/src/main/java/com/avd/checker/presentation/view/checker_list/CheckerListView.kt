@@ -1,4 +1,4 @@
-package com.avd.checker.presentation.checker_list
+package com.avd.checker.presentation.view.checker_list
 
 import com.avd.checker.domain.model.CheckerModel
 

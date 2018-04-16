@@ -1,4 +1,4 @@
-package com.avd.checker.presentation.checker_list
+package com.avd.checker.presentation.view.checker_list
 
 import android.content.Context
 import android.view.View
@@ -7,9 +7,6 @@ import com.avd.checker.di.checkers.CheckerListScope
 import com.avd.checker.domain.model.CheckerModel
 import com.avd.checker.presentation.base.BaseAdapter
 import javax.inject.Inject
-import android.view.animation.AnimationUtils
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils.loadAnimation
 
 
 /**
@@ -25,7 +22,4 @@ class CheckerListAdapter @Inject constructor(context: Context) : BaseAdapter<Che
     override fun getViewHolder(itemView: View) = CheckerViewHolder(itemView)
 
     override fun getAnimationId() = R.anim.item_fall_down_anim
-
-
-
 }

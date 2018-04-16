@@ -1,6 +1,5 @@
-package com.avd.checker.presentation.checker_list
+package com.avd.checker.presentation.view.checker_list
 
-import android.app.NotificationChannel
 import android.content.Intent
 import android.os.Bundle
 import android.support.transition.Fade
@@ -20,11 +19,6 @@ import com.avd.checker.presentation.presenter.CheckerListPresenter
 import com.avd.checker.presentation.view.checker_detail.CheckerDetailActivity
 import kotlinx.android.synthetic.main.activity_checker_list.*
 import javax.inject.Inject
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Context
-import android.os.Build
-import android.support.v4.app.NotificationCompat
 import com.avd.checker.ext.lts
 import com.avd.checker.presentation.notification.NotificationHandler
 

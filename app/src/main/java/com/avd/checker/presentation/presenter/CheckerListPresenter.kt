@@ -1,7 +1,7 @@
 package com.avd.checker.presentation.presenter
 
 import com.avd.checker.presentation.base.Presenter
-import com.avd.checker.presentation.checker_list.CheckerListView
+import com.avd.checker.presentation.view.checker_list.CheckerListView
 
 /**
  * Created by Aleksey Dementyev on 07.11.2017.
