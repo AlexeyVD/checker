@@ -1,7 +1,5 @@
 package com.avd.checker.domain.model.time_data
 
-import com.avd.checker.ext.getUnitValueByLts
-import com.avd.checker.ext.resetTime
 import java.util.*
 import java.util.Calendar.*
 
@@ -36,4 +34,6 @@ class MonthTimeData : TimeData {
     }
 
     override fun getNextTimeUnitLts(lts: Long) = lts + getTimeRemaining(lts)
+
+    override fun getType() = TimeData.MONTH
 }

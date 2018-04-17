@@ -1,6 +1,7 @@
 package com.avd.checker.domain.repository
 
 import com.avd.checker.domain.model.CheckerModel
+import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 
@@ -11,24 +12,14 @@ import io.reactivex.Single
 interface CheckerRepository {
 
     /**
-     * @return generated id for new checker
-     */
-    fun generateId(): Int
-
-    /**
      * @return Single with list of existing [CheckerModel] checkers
      */
     fun getCheckers(): Single<List<CheckerModel>>
 
     /**
-     * Adds [checker] to repository
+     * Puts checker to repository or replaces it if exists
      */
-    fun addChecker(checker: CheckerModel)
-
-    /**
-     * Updates [checker] in repository
-     */
-    fun updateChecker(checker: CheckerModel)
+    fun putChecker(checker: CheckerModel): Completable
 
     /**
      * Subscribes checkers changing

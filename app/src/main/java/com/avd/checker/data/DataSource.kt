@@ -13,7 +13,7 @@ interface DataSource<T> {
     /**
      * Put element to data source
      */
-    fun put(element: T): Completable
+    fun put(element: T): Single<T>
 
     /**
      * @return Single with list of existing elements
@@ -23,7 +23,7 @@ interface DataSource<T> {
     /**
      * @return Single with element by [id]
      */
-    fun get(id: Int): Single<T>
+    fun get(id: Long): Single<T>
 
     /**
      * Remove all elements from data source
@@ -33,5 +33,5 @@ interface DataSource<T> {
     /**
      * Remove element from data source by [id]
      */
-    fun remove(id: Int): Completable
+    fun remove(id: Long): Completable
 }

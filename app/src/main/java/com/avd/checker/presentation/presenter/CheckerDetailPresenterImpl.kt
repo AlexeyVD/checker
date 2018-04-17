@@ -2,7 +2,6 @@ package com.avd.checker.presentation.presenter
 
 import com.avd.checker.di.checkers.CheckerListScope
 import com.avd.checker.domain.checker_detail.CheckerDetailInteractor
-import com.avd.checker.domain.model.CheckerModel
 import com.avd.checker.presentation.base.BasePresenter
 import com.avd.checker.presentation.view.checker_detail.CheckerDetailView
 import javax.inject.Inject
@@ -16,7 +15,7 @@ class CheckerDetailPresenterImpl @Inject constructor(val interactor: CheckerDeta
         BasePresenter<CheckerDetailView>(), CheckerDetailPresenter {
 
     override fun createChecker(title: String, period: String) {
-        interactor.addChecker(title, period)
+        interactor.createChecker(title, period)
         mView?.close()
     }
 

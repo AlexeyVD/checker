@@ -3,7 +3,6 @@ package com.avd.checker.domain.checker_list
 import com.avd.checker.di.checkers.CheckerListScope
 import com.avd.checker.domain.model.CheckerModel
 import com.avd.checker.domain.repository.CheckerRepository
-import com.avd.checker.ext.lts
 import io.reactivex.Flowable
 import io.reactivex.Single
 import javax.inject.Inject
@@ -37,7 +36,8 @@ class CheckerListInteractorImpl @Inject constructor(val repository: CheckerRepos
             if (it.isExpired(lts)) {
                 it.isChecked = false
                 it.updatePeriod(lts)
-                repository.updateChecker(it)
+                //FIXME add async updating
+                repository.putChecker(it)
             }
         }
         return checkers

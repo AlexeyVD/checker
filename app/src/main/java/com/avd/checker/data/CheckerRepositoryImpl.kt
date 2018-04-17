@@ -2,10 +2,7 @@ package com.avd.checker.data
 
 import com.avd.checker.domain.model.CheckerModel
 import com.avd.checker.domain.repository.CheckerRepository
-import io.reactivex.BackpressureStrategy
-import io.reactivex.Flowable
-import io.reactivex.FlowableEmitter
-import io.reactivex.Single
+import io.reactivex.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -19,17 +16,12 @@ class CheckerRepositoryImpl @Inject constructor(val dataSource: DataSource<Check
 
     private var mEmitter: FlowableEmitter<CheckerModel>? = null
 
-    override fun generateId() = 1
-
     override fun getCheckers(): Single<List<CheckerModel>> = dataSource.getAll()
 
-    override fun addChecker(checker: CheckerModel) {
-        dataSource.put(checker)
-        mEmitter?.onNext(checker)
-    }
-
-    override fun updateChecker(checker: CheckerModel) {
-        dataSource.put(checker)
+    override fun putChecker(checker: CheckerModel): Completable {
+        return dataSource.put(checker)
+                .doOnSuccess(this::notifyCheckerChanged)
+                .toCompletable()
     }
 
     override fun subscribeCheckers(): Flowable<CheckerModel> {
@@ -39,5 +31,9 @@ class CheckerRepositoryImpl @Inject constructor(val dataSource: DataSource<Check
     override fun unsubscribeCheckers() {
         mEmitter?.onComplete()
         mEmitter = null
+    }
+
+    private fun notifyCheckerChanged(checker: CheckerModel) {
+        mEmitter?.onNext(checker)
     }
 }

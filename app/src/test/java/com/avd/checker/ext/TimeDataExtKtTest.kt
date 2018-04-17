@@ -2,6 +2,7 @@ package com.avd.checker.ext
 
 import com.avd.checker.domain.model.time_data.FixedIntervalTimeData
 import com.avd.checker.domain.model.time_data.TimeData
+import com.avd.checker.domain.model.time_data.getUnitValueByLts
 import org.amshove.kluent.shouldEqual
 import org.junit.Before
 import org.junit.Test

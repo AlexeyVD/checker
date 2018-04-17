@@ -10,7 +10,7 @@ import javax.inject.Singleton
  * Created by Aleksey Dementyev on 11.11.2017.
  */
 
-@Component(modules = [(NotificationModule::class), (RepositoryModule::class)])
+@Component(modules = [(NotificationModule::class), (RepositoryModule::class), (DbModule::class)])
 @Singleton
 interface AppComponent {
 
@@ -19,6 +19,7 @@ interface AppComponent {
         @BindsInstance
         fun context(context: Context): Builder
         fun notificationModule(notificationModule: NotificationModule): Builder
+        fun dbModule(dbModule: DbModule): Builder
         fun build(): AppComponent
     }
 

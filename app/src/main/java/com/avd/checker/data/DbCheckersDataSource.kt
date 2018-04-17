@@ -1,5 +1,6 @@
 package com.avd.checker.data
 
+import com.avd.checker.data.db.CheckersDatabase
 import com.avd.checker.domain.model.CheckerModel
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -7,7 +8,8 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DbCheckersDataSource @Inject constructor() : DataSource<CheckerModel> {
+class DbCheckersDataSource @Inject constructor(val db: CheckersDatabase) :
+        DataSource<CheckerModel> {
 
     private val cache = CheckersCache()
 
@@ -16,9 +18,9 @@ class DbCheckersDataSource @Inject constructor() : DataSource<CheckerModel> {
         return Completable.complete()
     }
 
-    override fun put(element: CheckerModel): Completable {
+    override fun put(element: CheckerModel): Single<CheckerModel> {
         cache.put(element)
-        return Completable.complete()
+        return Single.just(element)
     }
 
     override fun getAll(): Single<List<CheckerModel>> {
@@ -26,7 +28,7 @@ class DbCheckersDataSource @Inject constructor() : DataSource<CheckerModel> {
         return if (cache.isExpired()) Single.just(emptyList()) else Single.just(cache.getAll())
     }
 
-    override fun get(id: Int): Single<CheckerModel> {
+    override fun get(id: Long): Single<CheckerModel> {
         return if (cache.isExpired())
             Single.error(Throwable("Checker not found"))
         else {
@@ -40,7 +42,7 @@ class DbCheckersDataSource @Inject constructor() : DataSource<CheckerModel> {
         return Completable.complete()
     }
 
-    override fun remove(id: Int): Completable {
+    override fun remove(id: Long): Completable {
         cache.remove(id)
         return Completable.complete()
     }

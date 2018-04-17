@@ -14,7 +14,7 @@ class CheckerViewHolder(itemView: View) : BaseViewHolder<CheckerModel>(itemView)
 
     override fun bind(item: CheckerModel) {
         mItem = item
-        itemView.check_title.text = mItem.checkerTitle
+        itemView.check_title.text = mItem.title
 //        itemView.remaining.text = mItem.remaining
     }
 }

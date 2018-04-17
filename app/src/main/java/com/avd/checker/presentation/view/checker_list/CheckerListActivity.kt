@@ -19,7 +19,7 @@ import com.avd.checker.presentation.presenter.CheckerListPresenter
 import com.avd.checker.presentation.view.checker_detail.CheckerDetailActivity
 import kotlinx.android.synthetic.main.activity_checker_list.*
 import javax.inject.Inject
-import com.avd.checker.ext.lts
+import com.avd.checker.domain.model.time_data.lts
 import com.avd.checker.presentation.notification.NotificationHandler
 
 

@@ -3,7 +3,8 @@ package com.avd.checker.domain.checker_detail
 import com.avd.checker.di.checkers.CheckerListScope
 import com.avd.checker.domain.model.CheckerModel
 import com.avd.checker.domain.repository.CheckerRepository
-import com.avd.checker.ext.createTimeData
+import com.avd.checker.domain.model.time_data.createTimeData
+import io.reactivex.Completable
 import javax.inject.Inject
 
 /**
@@ -15,9 +16,9 @@ import javax.inject.Inject
 class CheckerDetailInteractorImpl @Inject constructor(val repository: CheckerRepository) :
         CheckerDetailInteractor {
 
-    override fun addChecker(title: String, period: String) {
-        val model = CheckerModel(repository.generateId(), title,
+    override fun createChecker(title: String, period: String): Completable {
+        val model = CheckerModel(0, title,
                 createTimeData(period), false, 0)
-        repository.addChecker(model)
+        return repository.putChecker(model)
     }
 }

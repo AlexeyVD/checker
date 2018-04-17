@@ -7,8 +7,8 @@ import com.avd.checker.domain.model.time_data.TimeData
  */
 
 class CheckerModel (
-        val id: Int,
-        var checkerTitle: String,
+        val id: Long,
+        var title: String,
         var timeData: TimeData,
         var isChecked: Boolean,
         var periodStartLts: Long) {

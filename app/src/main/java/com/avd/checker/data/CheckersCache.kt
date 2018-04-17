@@ -1,12 +1,12 @@
 package com.avd.checker.data
 
 import com.avd.checker.domain.model.CheckerModel
-import com.avd.checker.ext.lts
+import com.avd.checker.domain.model.time_data.lts
 
 class CheckersCache {
 
     private var updateLts:Long = 0
-    private val checkers = HashMap<Int, CheckerModel>()
+    private val checkers = HashMap<Long, CheckerModel>()
 
     /**
      * Add all [checkers] to cache
@@ -32,7 +32,7 @@ class CheckersCache {
     /**
      * @return checker from cache by [id]
      */
-    fun get(id: Int) = checkers[id]
+    fun get(id: Long) = checkers[id]
 
     /**
      * Remove all elements from cache
@@ -45,7 +45,7 @@ class CheckersCache {
     /**
      * Remove checker from cache by [id]
      */
-    fun remove(id: Int) {
+    fun remove(id: Long) {
         checkers.remove(id)
         updateLts()
     }
