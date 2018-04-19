@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_checker_list.*
 import javax.inject.Inject
 import com.avd.checker.domain.model.time_data.lts
 import com.avd.checker.presentation.notification.NotificationHandler
+import com.avd.checker.presentation.service.ApplyService
 
 
 /**
@@ -64,8 +65,6 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
 
         floating_create_button.setOnClickListener({
             openDetailActivity()
-//            addItem(CheckerModel("Заплатить налоги", "Осталось: 1 ч 25 мин",
-//                    false))
         })
     }
 
@@ -113,9 +112,14 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
         startActivity(intent)
     }
 
+    override fun onStop() {
+        startService(Intent(this, ApplyService::class.java))
+        super.onStop()
+    }
+
     override fun onDestroy() {
-        super.onDestroy()
         presenter.onStop()
         presenter.detachView()
+        super.onDestroy()
     }
 }

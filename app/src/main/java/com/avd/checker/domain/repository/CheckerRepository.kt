@@ -12,14 +12,19 @@ import io.reactivex.Single
 interface CheckerRepository {
 
     /**
-     * @return Single with list of existing [CheckerModel] checkers
+     * @return next id
      */
-    fun getCheckers(): Single<List<CheckerModel>>
+    fun generateId(): Long
+
+    /**
+     * @return list of existing [CheckerModel] checkers
+     */
+    fun getCheckers(): List<CheckerModel>
 
     /**
      * Puts checker to repository or replaces it if exists
      */
-    fun putChecker(checker: CheckerModel): Completable
+    fun putChecker(checker: CheckerModel)
 
     /**
      * Subscribes checkers changing
@@ -30,4 +35,14 @@ interface CheckerRepository {
      * Unsubscribes checkers changing
      */
     fun unsubscribeCheckers()
+
+    /**
+     * Init data source
+     */
+    fun init(): Completable
+
+    /**
+     * Applies changes in data source
+     */
+    fun apply()
 }

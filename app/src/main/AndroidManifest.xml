@@ -18,6 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".presentation.view.checker_detail.CheckerDetailActivity"/>
+
+        <service android:name=".presentation.service.ApplyService" />
     </application>
 
 </manifest>

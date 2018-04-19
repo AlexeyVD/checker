@@ -25,17 +25,9 @@ class CheckerListPresenterImpl @Inject constructor(val interactor: CheckerListIn
     private var checkersSub: Disposable? = null
 
     override fun onStart(lts: Long) {
-        interactor.getCheckers(lts)
-                .subscribe({
-                    if (it.isEmpty()) {
-                        mView?.showCreateButton()
-                    } else {
-                        items.addAll(it)
-                        mView?.hideCreateButton()
-                        mView?.setItems(it)
-                    }
-                    subscribeCheckers()
-                }, {Log.e(TAG, it.message)})
+        interactor.init()
+                .subscribe({ addCheckers(lts) }, { Log.e(TAG, it.message) })
+        subscribeCheckers()
     }
 
     override fun onStop() {
@@ -57,7 +49,18 @@ class CheckerListPresenterImpl @Inject constructor(val interactor: CheckerListIn
                     }
                     items.add(it)
                     mView?.addItem(it)
-                }, {Log.e(TAG, it.message)})
+                }, { Log.e(TAG, it.message) })
     }
 
+    private fun addCheckers(lts: Long) {
+        val checkers = interactor.getCheckers(lts)
+
+        if (checkers.isEmpty()) {
+            mView?.showCreateButton()
+        } else {
+            items.addAll(checkers)
+            mView?.hideCreateButton()
+            mView?.setItems(checkers)
+        }
+    }
 }

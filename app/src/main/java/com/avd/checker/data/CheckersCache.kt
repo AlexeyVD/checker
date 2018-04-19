@@ -7,6 +7,7 @@ class CheckersCache {
 
     private var updateLts:Long = 0
     private val checkers = HashMap<Long, CheckerModel>()
+    private val removed = ArrayList<CheckerModel>()
 
     /**
      * Add all [checkers] to cache
@@ -38,6 +39,7 @@ class CheckersCache {
      * Remove all elements from cache
      */
     fun removeAll() {
+        removed.addAll(checkers.values)
         checkers.clear()
         updateLts()
     }
@@ -46,9 +48,16 @@ class CheckersCache {
      * Remove checker from cache by [id]
      */
     fun remove(id: Long) {
+        val checker = checkers[id] ?: return
+        removed.add(checker)
         checkers.remove(id)
         updateLts()
     }
+
+    /**
+     * @return list of removed checkers
+     */
+    fun removed() = removed
 
     /**
      * @return true if data in cache is expired or false otherwise

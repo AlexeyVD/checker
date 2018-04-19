@@ -1,6 +1,7 @@
 package com.avd.checker.domain.checker_list
 
 import com.avd.checker.domain.model.CheckerModel
+import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 
@@ -9,10 +10,16 @@ import io.reactivex.Single
  */
 
 interface CheckerListInteractor {
+
     /**
-     * @return Single with list of existing [CheckerModel] checkers
+     * Init repository
      */
-    fun getCheckers(lts: Long): Single<List<CheckerModel>>
+    fun init(): Completable
+
+    /**
+     * @return List of existing [CheckerModel] checkers
+     */
+    fun getCheckers(lts: Long): List<CheckerModel>
 
     /**
      * @return Flowable that emits [CheckerModel] checker, when it is created or updated

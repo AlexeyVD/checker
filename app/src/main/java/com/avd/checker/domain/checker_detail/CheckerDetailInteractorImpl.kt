@@ -16,9 +16,8 @@ import javax.inject.Inject
 class CheckerDetailInteractorImpl @Inject constructor(val repository: CheckerRepository) :
         CheckerDetailInteractor {
 
-    override fun createChecker(title: String, period: String): Completable {
-        val model = CheckerModel(0, title,
-                createTimeData(period), false, 0)
-        return repository.putChecker(model)
+    override fun createChecker(title: String, period: String) {
+        repository.putChecker(CheckerModel(repository.generateId(), title, createTimeData(period),
+                false, 0))
     }
 }

@@ -1,6 +1,5 @@
 package com.avd.checker.presentation.presenter
 
-import com.avd.checker.domain.model.CheckerModel
 import com.avd.checker.presentation.base.Presenter
 import com.avd.checker.presentation.view.checker_detail.CheckerDetailView
 
@@ -9,5 +8,9 @@ import com.avd.checker.presentation.view.checker_detail.CheckerDetailView
  */
 
 interface CheckerDetailPresenter : Presenter<CheckerDetailView> {
+
+    /**
+     * Creates new checker
+     */
     fun createChecker(title: String, period: String)
 }

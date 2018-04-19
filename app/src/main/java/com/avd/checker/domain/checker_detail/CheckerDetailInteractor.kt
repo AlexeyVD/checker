@@ -8,5 +8,9 @@ import io.reactivex.Completable
  */
 
 interface CheckerDetailInteractor {
-    fun createChecker(title: String, period: String): Completable
+
+    /**
+     * Creates new checker
+     */
+    fun createChecker(title: String, period: String)
 }

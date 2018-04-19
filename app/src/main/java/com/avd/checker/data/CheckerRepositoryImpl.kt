@@ -16,12 +16,13 @@ class CheckerRepositoryImpl @Inject constructor(val dataSource: DataSource<Check
 
     private var mEmitter: FlowableEmitter<CheckerModel>? = null
 
-    override fun getCheckers(): Single<List<CheckerModel>> = dataSource.getAll()
+    override fun generateId() = dataSource.generateId()
 
-    override fun putChecker(checker: CheckerModel): Completable {
-        return dataSource.put(checker)
-                .doOnSuccess(this::notifyCheckerChanged)
-                .toCompletable()
+    override fun getCheckers() = dataSource.getAll()
+
+    override fun putChecker(checker: CheckerModel) {
+        dataSource.put(checker)
+        notifyCheckerChanged(checker)
     }
 
     override fun subscribeCheckers(): Flowable<CheckerModel> {
@@ -35,5 +36,11 @@ class CheckerRepositoryImpl @Inject constructor(val dataSource: DataSource<Check
 
     private fun notifyCheckerChanged(checker: CheckerModel) {
         mEmitter?.onNext(checker)
+    }
+
+    override fun init() = dataSource.init()
+
+    override fun apply() {
+        dataSource.apply()
     }
 }
