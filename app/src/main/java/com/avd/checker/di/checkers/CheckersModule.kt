@@ -31,10 +31,6 @@ interface CheckersModule {
 
     @Binds
     @CheckerListScope
-    fun provideBaseAdapter(adapter: CheckerListAdapter): BaseAdapter<CheckerModel, CheckerViewHolder>
-
-    @Binds
-    @CheckerListScope
     fun provideCheckerListInteractor(interactor: CheckerListInteractorImpl): CheckerListInteractor
 
     @Binds

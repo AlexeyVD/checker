@@ -1,5 +1,6 @@
 package com.avd.checker.presentation.presenter
 
+import com.avd.checker.domain.model.CheckerModel
 import com.avd.checker.presentation.base.Presenter
 import com.avd.checker.presentation.view.checker_list.CheckerListView
 
@@ -23,4 +24,14 @@ interface CheckerListPresenter : Presenter<CheckerListView> {
      * Handles click on creating button
      */
     fun onCreateButtonClick()
+
+    /**
+     * Handles click on checker item
+     */
+    fun onCheckerClick(checker: CheckerModel)
+
+    /**
+     * Handles click on state button
+     */
+    fun onStateButtonClick(checker: CheckerModel)
 }

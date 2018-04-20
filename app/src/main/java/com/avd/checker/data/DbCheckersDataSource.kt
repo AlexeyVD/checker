@@ -30,7 +30,7 @@ class DbCheckersDataSource @Inject constructor(val db: CheckersDatabase) :
                 .toCompletable()
     }
 
-    override fun generateId() = ai.getAndIncrement()
+    override fun generateId() = ai.incrementAndGet()
 
     override fun putAll(elements: List<CheckerModel>) {
         cache.putAll(elements)

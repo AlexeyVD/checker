@@ -1,6 +1,5 @@
 package com.avd.checker.presentation.base
 
-import android.R
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,17 +8,24 @@ import android.view.ViewGroup
 import java.util.ArrayList
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import com.avd.checker.domain.model.Model
+import com.avd.checker.ext.replaceIf
 
 
 /**
  * Created by Aleksey Dementyev on 10.10.2017.
  */
 
-abstract class BaseAdapter<T, VH : BaseViewHolder<T>>(val context: Context) :
+abstract class BaseAdapter<T : Model, VH : BaseViewHolder<T>>(val context: Context) :
         RecyclerView.Adapter<VH>() {
 
-    private val mElements = ArrayList<T>()
+    companion object {
+        const val NO_ANIMATION = -1
+    }
+
+    private val elements = ArrayList<T>()
     private var itemAnimation: Animation? = null
+    private var isNewItemInserted = false
 
     init {
         initAnimation()
@@ -33,37 +39,62 @@ abstract class BaseAdapter<T, VH : BaseViewHolder<T>>(val context: Context) :
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        holder.bind(mElements[position])
+        holder.bind(elements[position])
         animateItem(holder.itemView, position)
     }
 
-    override fun getItemCount()= mElements.size
+    override fun getItemCount()= elements.size
 
+    /**
+     * Clears elements list and adds all [elements] to adapter
+     */
     fun setElements(elements: Collection<T>) {
-        mElements.addAll(elements)
+        if (!this.elements.isEmpty()) this.elements.clear()
+        this.elements.addAll(elements)
         notifyDataSetChanged()
     }
 
+    /**
+     * Add new [item] to [elements] or replaces it if exists
+     */
     fun addElement(item: T) {
-        mElements.add(item)
-        notifyItemInserted(mElements.size - 1)
+
+        var position = 0
+
+        val iterator = elements.listIterator()
+
+        while (iterator.hasNext()) {
+            if (item.id() == iterator.next().id()) {
+                iterator.set(item)
+                notifyItemChanged(position)
+                return
+            }
+            position++
+        }
+        iterator.add(item)
+        isNewItemInserted = true
+        notifyItemInserted(elements.size - 1)
     }
 
     protected abstract fun getItemLayoutId(): Int
 
     protected abstract fun getViewHolder(itemView: View): VH
 
-    protected open fun getAnimationId(): Int = -1
+    protected open fun getAnimationId(): Int = NO_ANIMATION
 
     private fun initAnimation() {
         val animationId = getAnimationId()
-        if (animationId == -1) return
+        if (animationId == NO_ANIMATION) return
         itemAnimation = AnimationUtils.loadAnimation(context, animationId)
     }
 
     private fun animateItem(view: View, position: Int) {
-        if (itemAnimation == null || position < mElements.size - 1)
+        if (itemAnimation == null || position < elements.size - 1)
             return
-        view.startAnimation(itemAnimation)
+
+        if (isNewItemInserted) {
+            view.startAnimation(itemAnimation)
+            isNewItemInserted = false
+        }
     }
 }

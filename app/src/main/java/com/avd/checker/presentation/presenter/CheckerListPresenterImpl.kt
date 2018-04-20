@@ -38,17 +38,27 @@ class CheckerListPresenterImpl @Inject constructor(val interactor: CheckerListIn
     }
 
     override fun onCreateButtonClick() {
-        mView?.openDetailActivity()
+        view?.onCreateRequest()
+    }
+
+    override fun onCheckerClick(checker: CheckerModel) {
+        view?.onChangeRequest()
+    }
+
+    override fun onStateButtonClick(checker: CheckerModel) {
+        val item = interactor.changeCheckerState(checker)
+        items[item.id] = item
+        view?.onCheckerChanged(item)
     }
 
     private fun subscribeCheckers() {
         checkersSub = interactor.subscribeCheckers()
                 .subscribe({
                     if (items.isEmpty()) {
-                        mView?.hideCreateButton()
+                        view?.hideCreateButton()
                     }
                     items[it.id] = it
-                    mView?.addItem(it)
+                    view?.addItem(it)
                 }, { Log.e(TAG, it.message) })
     }
 
@@ -56,11 +66,11 @@ class CheckerListPresenterImpl @Inject constructor(val interactor: CheckerListIn
         val checkers = interactor.getCheckers(lts)
 
         if (checkers.isEmpty()) {
-            mView?.showCreateButton()
+            view?.showCreateButton()
         } else {
             checkers.forEach { items[it.id] = it }
-            mView?.hideCreateButton()
-            mView?.setItems(checkers)
+            view?.hideCreateButton()
+            view?.setItems(checkers)
         }
     }
 }

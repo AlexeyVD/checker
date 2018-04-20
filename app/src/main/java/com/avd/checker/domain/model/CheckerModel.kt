@@ -11,7 +11,9 @@ class CheckerModel (
         var title: String,
         var timeData: TimeData,
         var isChecked: Boolean,
-        var periodStartLts: Long) {
+        var periodStartLts: Long) : Model  {
+
+    override fun id() = id
 
     fun isExpired(lts: Long) = timeData.isExpired(periodStartLts, lts)
 

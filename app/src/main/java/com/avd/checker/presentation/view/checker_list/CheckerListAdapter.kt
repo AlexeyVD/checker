@@ -14,12 +14,12 @@ import javax.inject.Inject
  */
 
 @CheckerListScope
-class CheckerListAdapter @Inject constructor(context: Context) : BaseAdapter<CheckerModel,
-        CheckerViewHolder>(context) {
+class CheckerListAdapter (context: Context, private val listener: OnCheckerClickListener) :
+        BaseAdapter<CheckerModel, CheckerViewHolder>(context) {
 
     override fun getItemLayoutId() = R.layout.item_checker_list
 
-    override fun getViewHolder(itemView: View) = CheckerViewHolder(itemView)
+    override fun getViewHolder(itemView: View) = CheckerViewHolder(itemView, listener)
 
     override fun getAnimationId() = R.anim.item_fall_down_anim
 }

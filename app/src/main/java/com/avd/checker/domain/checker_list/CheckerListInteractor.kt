@@ -30,4 +30,10 @@ interface CheckerListInteractor {
      * Remove subscription of [CheckerModel] checkers changing
      */
     fun unsubscribeCheckers()
+
+    /**
+     * Changes [checker] isChecked state
+     * @return updated [checker]
+     */
+    fun changeCheckerState(checker: CheckerModel): CheckerModel
 }

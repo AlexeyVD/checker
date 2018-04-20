@@ -36,4 +36,10 @@ class CheckerListInteractorImpl @Inject constructor(val repository: CheckerRepos
     override fun unsubscribeCheckers() {
         repository.unsubscribeCheckers()
     }
+
+    override fun changeCheckerState(checker: CheckerModel): CheckerModel {
+        checker.isChecked = !checker.isChecked
+        repository.putChecker(checker)
+        return checker
+    }
 }

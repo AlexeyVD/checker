@@ -6,14 +6,14 @@ package com.avd.checker.presentation.base
 
 open class BasePresenter<T> : Presenter<T> {
 
-    protected var mView: T? = null
+    protected var view: T? = null
 
     override fun attachView(view: T) {
-        mView = view
+        this.view = view
     }
 
     override fun detachView() {
-        mView = null
+        view = null
     }
 
 }

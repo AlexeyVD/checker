@@ -14,7 +14,6 @@ import com.avd.checker.ext.getApp
 import com.avd.checker.ext.gone
 import com.avd.checker.ext.visible
 import com.avd.checker.presentation.base.BaseActivity
-import com.avd.checker.presentation.base.BaseAdapter
 import com.avd.checker.presentation.presenter.CheckerListPresenter
 import com.avd.checker.presentation.view.checker_detail.CheckerDetailActivity
 import kotlinx.android.synthetic.main.activity_checker_list.*
@@ -33,8 +32,7 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
     @Inject
     lateinit var presenter: CheckerListPresenter
 
-    @Inject
-    lateinit var adapter: BaseAdapter<CheckerModel, CheckerViewHolder>
+    private lateinit var adapter: CheckerListAdapter
 
     @Inject
     lateinit var notificationHandler: NotificationHandler
@@ -52,29 +50,6 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
     }
 
     override fun getLayoutId() = R.layout.activity_checker_list
-
-    private fun initPresenter() {
-        presenter.attachView(this)
-        presenter.onStart(lts())
-    }
-
-    private fun initButtons() {
-        create_button.setOnClickListener({
-            openDetailActivity()
-        })
-
-        floating_create_button.setOnClickListener({
-            openDetailActivity()
-        })
-    }
-
-    private fun initRecycler() {
-        recycler.layoutManager = LinearLayoutManager(this)
-        val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        decoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider_gray)!!)
-        recycler.addItemDecoration(decoration)
-        recycler.adapter = adapter
-    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.checker_list_menu, menu)
@@ -103,13 +78,22 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
         create_button.visible()
     }
 
-    override fun openDetailActivity() {
+    override fun onCreateRequest() {
 
 //        notificationHandler.notify(this, CheckerListActivity::class.java,
 //                "Test", "TestMsg", R.drawable.ic_settings_white_24dp)
 
         val intent = Intent(this, CheckerDetailActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun onChangeRequest() {
+        val intent = Intent(this, CheckerDetailActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun onCheckerChanged(checker: CheckerModel) {
+        adapter.addElement(checker)
     }
 
     override fun onStop() {
@@ -122,4 +106,39 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
         presenter.detachView()
         super.onDestroy()
     }
+
+    private fun initPresenter() {
+        presenter.attachView(this)
+        presenter.onStart(lts())
+    }
+
+    private fun initButtons() {
+        create_button.setOnClickListener({
+            onCreateRequest()
+        })
+
+        floating_create_button.setOnClickListener({
+            onCreateRequest()
+        })
+    }
+
+    private fun initRecycler() {
+        adapter = createAdapter()
+        recycler.layoutManager = LinearLayoutManager(this)
+        val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        decoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider_gray)!!)
+        recycler.addItemDecoration(decoration)
+        recycler.adapter = adapter
+    }
+
+    private fun createAdapter() = CheckerListAdapter(this, object: OnCheckerClickListener {
+
+        override fun onItemClick(item: CheckerModel) {
+            presenter.onCheckerClick(item)
+        }
+
+        override fun onStateButtonClick(item: CheckerModel) {
+            presenter.onStateButtonClick(item)
+        }
+    })
 }

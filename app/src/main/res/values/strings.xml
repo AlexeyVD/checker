@@ -5,6 +5,9 @@
     <string name="periodDescription">Период повторения события</string>
     <string name="titleDescription">Например: покормить кота</string>
 
+    <string name="done">ГОТОВО</string>
+    <string name="undone">НЕ ГОТОВО</string>
+
     <string-array name="periods">
         <item>Час</item>
         <item>День</item>
