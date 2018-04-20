@@ -1,5 +1,6 @@
 package com.avd.checker.data
 
+import android.util.Log
 import com.avd.checker.data.db.CheckersDatabase
 import com.avd.checker.domain.model.CheckerModel
 import io.reactivex.Completable
@@ -20,10 +21,10 @@ class DbCheckersDataSource @Inject constructor(val db: CheckersDatabase) :
         return db.checkerDao()
                 .getAll()
                 .subscribeOn(Schedulers.io())
-                .map { it.map { it.toModel() } }
                 .observeOn(AndroidSchedulers.mainThread())
+                .map { it.map { it.toModel() } }
                 .doOnSuccess {
-                    cache.putAll(it)
+                    cache.putAll(it.sortedBy { it.id })
                     ai.set(it.map { it.id }.max()?: 0)
                 }
                 .toCompletable()
@@ -54,5 +55,6 @@ class DbCheckersDataSource @Inject constructor(val db: CheckersDatabase) :
     override fun apply() {
         db.checkerDao().insertAll(cache.getAll().map { it.toEntity() })
         db.checkerDao().delete(cache.removed().map { it.toEntity() })
+        Log.i("DbCheckersDataSource", "Data applied successfully")
     }
 }

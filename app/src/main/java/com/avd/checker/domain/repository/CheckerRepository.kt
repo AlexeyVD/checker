@@ -22,6 +22,11 @@ interface CheckerRepository {
     fun getCheckers(): List<CheckerModel>
 
     /**
+     * Creates new checker
+     */
+    fun createChecker(checker: CheckerModel)
+
+    /**
      * Puts checker to repository or replaces it if exists
      */
     fun putChecker(checker: CheckerModel)

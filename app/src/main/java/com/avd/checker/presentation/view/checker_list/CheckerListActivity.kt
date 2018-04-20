@@ -105,8 +105,8 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
 
     override fun openDetailActivity() {
 
-        notificationHandler.notify(this, CheckerListActivity::class.java,
-                "Test", "TestMsg", R.drawable.ic_settings_white_24dp)
+//        notificationHandler.notify(this, CheckerListActivity::class.java,
+//                "Test", "TestMsg", R.drawable.ic_settings_white_24dp)
 
         val intent = Intent(this, CheckerDetailActivity::class.java)
         startActivity(intent)

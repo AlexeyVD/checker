@@ -34,7 +34,7 @@ fun Calendar.resetTime() {
     set(Calendar.MILLISECOND, 0)
 }
 
-fun createTimeData(period: String): TimeData = FixedIntervalTimeData(3600)
+fun createTimeData(period: String): TimeData = getTimeData(HOUR)
 
 fun lts() = System.currentTimeMillis()
 

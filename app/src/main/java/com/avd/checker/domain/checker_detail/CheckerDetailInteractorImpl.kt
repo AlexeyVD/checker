@@ -17,7 +17,7 @@ class CheckerDetailInteractorImpl @Inject constructor(val repository: CheckerRep
         CheckerDetailInteractor {
 
     override fun createChecker(title: String, period: String) {
-        repository.putChecker(CheckerModel(repository.generateId(), title, createTimeData(period),
+        repository.createChecker(CheckerModel(repository.generateId(), title, createTimeData(period),
                 false, 0))
     }
 }

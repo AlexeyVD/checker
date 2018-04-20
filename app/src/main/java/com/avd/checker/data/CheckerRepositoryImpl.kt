@@ -20,9 +20,13 @@ class CheckerRepositoryImpl @Inject constructor(val dataSource: DataSource<Check
 
     override fun getCheckers() = dataSource.getAll()
 
-    override fun putChecker(checker: CheckerModel) {
+    override fun createChecker(checker: CheckerModel) {
         dataSource.put(checker)
         notifyCheckerChanged(checker)
+    }
+
+    override fun putChecker(checker: CheckerModel) {
+        dataSource.put(checker)
     }
 
     override fun subscribeCheckers(): Flowable<CheckerModel> {

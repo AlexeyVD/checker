@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey
 
 @Entity(tableName = "checkers")
 data class CheckerEntity(
-        @PrimaryKey(autoGenerate = true) var id: Long,
+        @PrimaryKey var id: Long,
         @ColumnInfo(name = "title") var title: String,
         @ColumnInfo(name = "time_data_type") var timeDataType: Int,
         @ColumnInfo(name = "is_checked") var isChecked: Boolean,

@@ -21,7 +21,7 @@ class CheckerListPresenterImpl @Inject constructor(val interactor: CheckerListIn
         val TAG = CheckerListPresenterImpl::class.java.simpleName!!
     }
 
-    private var items = ArrayList<CheckerModel>()
+    private val items = HashMap<Long, CheckerModel>()
     private var checkersSub: Disposable? = null
 
     override fun onStart(lts: Long) {
@@ -47,7 +47,7 @@ class CheckerListPresenterImpl @Inject constructor(val interactor: CheckerListIn
                     if (items.isEmpty()) {
                         mView?.hideCreateButton()
                     }
-                    items.add(it)
+                    items[it.id] = it
                     mView?.addItem(it)
                 }, { Log.e(TAG, it.message) })
     }
@@ -58,7 +58,7 @@ class CheckerListPresenterImpl @Inject constructor(val interactor: CheckerListIn
         if (checkers.isEmpty()) {
             mView?.showCreateButton()
         } else {
-            items.addAll(checkers)
+            checkers.forEach { items[it.id] = it }
             mView?.hideCreateButton()
             mView?.setItems(checkers)
         }
