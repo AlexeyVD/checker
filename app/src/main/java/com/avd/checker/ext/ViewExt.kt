@@ -5,6 +5,7 @@ import android.os.Build
 import android.support.v4.content.ContextCompat
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_checker_detail.*
 
@@ -17,6 +18,10 @@ fun View.setBackgroundColorId(colorId: Int) {
 }
 
 fun TextView.setTextColorId(colorId: Int) {
+    setTextColor(ContextCompat.getColor(context, colorId))
+}
+
+fun Button.setTextColorId(colorId: Int) {
     setTextColor(ContextCompat.getColor(context, colorId))
 }
 

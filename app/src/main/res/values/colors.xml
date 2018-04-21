@@ -19,6 +19,7 @@
 
     <color name="bg_gray">#F1F1F1</color>
     <color name="bg_green">#9DD04E</color>
+    <color name="bg_green_pressed">#ac9dd04e</color>
     <color name="bg_white">#FFFFFF</color>
 
 </resources>

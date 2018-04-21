@@ -35,7 +35,7 @@
             android:id="@+id/remaining"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/pinkText"
+            android:textColor="@color/descriptionText"
             android:text="Осталось: 1 ч 25 мин"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto_regular"
