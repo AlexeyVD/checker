@@ -15,7 +15,7 @@ import com.avd.checker.ext.gone
 import com.avd.checker.ext.visible
 import com.avd.checker.presentation.base.BaseActivity
 import com.avd.checker.presentation.presenter.CheckerListPresenter
-import com.avd.checker.presentation.view.checker_detail.CheckerDetailActivity
+import com.avd.checker.presentation.view.checker_create.CheckerCreateActivity
 import kotlinx.android.synthetic.main.activity_checker_list.*
 import javax.inject.Inject
 import com.avd.checker.domain.model.time_data.lts
@@ -83,12 +83,12 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
 //        notificationHandler.notify(this, CheckerListActivity::class.java,
 //                "Test", "TestMsg", R.drawable.ic_settings_white_24dp)
 
-        val intent = Intent(this, CheckerDetailActivity::class.java)
+        val intent = Intent(this, CheckerCreateActivity::class.java)
         startActivity(intent)
     }
 
     override fun onChangeRequest() {
-        val intent = Intent(this, CheckerDetailActivity::class.java)
+        val intent = Intent(this, CheckerCreateActivity::class.java)
         startActivity(intent)
     }
 

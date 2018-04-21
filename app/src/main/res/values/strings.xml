@@ -8,6 +8,8 @@
     <string name="done">ГОТОВО</string>
     <string name="undone">ОТМЕНА</string>
 
+    <string name="done_state">ВЫПОЛНЕНО</string>
+
     <string-array name="periods">
         <item>Час</item>
         <item>День</item>

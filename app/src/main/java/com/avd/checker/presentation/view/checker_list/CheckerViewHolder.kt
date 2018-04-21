@@ -35,6 +35,7 @@ class CheckerViewHolder(itemView: View, private val listener: OnCheckerClickList
         if (item.isChecked) {
             itemView.check_title.setTextColorId(R.color.whiteText)
             itemView.remaining.setTextColorId(R.color.whiteText)
+            itemView.remaining.text = itemView.context.getString(R.string.done_state)
             itemView.state_button.gone()
             itemView.setBackgroundDrawableId(R.drawable.bg_green_button_ripple)
         }

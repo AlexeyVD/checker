@@ -2,7 +2,7 @@ package com.avd.checker.di.checkers
 
 import com.avd.checker.presentation.service.ApplyService
 import com.avd.checker.presentation.view.checker_list.CheckerListActivity
-import com.avd.checker.presentation.view.checker_detail.CheckerDetailActivity
+import com.avd.checker.presentation.view.checker_create.CheckerCreateActivity
 import dagger.Subcomponent
 
 /**
@@ -19,6 +19,6 @@ interface CheckersComponent {
     }
 
     fun inject(checkerListActivity: CheckerListActivity)
-    fun inject(checkerDetailActivity: CheckerDetailActivity)
+    fun inject(checkerCreateActivity: CheckerCreateActivity)
     fun inject(applyService: ApplyService)
 }

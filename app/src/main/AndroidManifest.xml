@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.view.checker_detail.CheckerDetailActivity"/>
+        <activity android:name=".presentation.view.checker_create.CheckerCreateActivity"/>
 
         <service android:name=".presentation.service.ApplyService" />
     </application>

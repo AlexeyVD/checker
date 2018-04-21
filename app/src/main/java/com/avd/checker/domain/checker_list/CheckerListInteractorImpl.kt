@@ -28,7 +28,7 @@ class CheckerListInteractorImpl @Inject constructor(val repository: CheckerRepos
                 repository.putChecker(it)
             }
         }
-        return checkers
+        return checkers.sortedBy { it.isChecked }
     }
 
     override fun subscribeCheckers(): Flowable<CheckerModel> = repository.subscribeCheckers()

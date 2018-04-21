@@ -1,4 +1,4 @@
-package com.avd.checker.presentation.view.checker_detail
+package com.avd.checker.presentation.view.checker_create
 
 import android.os.Bundle
 import android.support.v7.app.ActionBar
@@ -10,7 +10,7 @@ import com.avd.checker.ext.closeKeyboard
 import com.avd.checker.ext.getApp
 import com.avd.checker.ext.getStringArrayItem
 import com.avd.checker.presentation.base.BaseActivity
-import com.avd.checker.presentation.presenter.CheckerDetailPresenter
+import com.avd.checker.presentation.presenter.CheckerCreatePresenter
 import kotlinx.android.synthetic.main.activity_checker_detail.*
 import javax.inject.Inject
 
@@ -19,10 +19,10 @@ import javax.inject.Inject
  * Created by Aleksey Dementyev on 08.11.2017.
  */
 
-class CheckerDetailActivity : BaseActivity(), CheckerDetailView {
+class CheckerCreateActivity : BaseActivity(), CheckerCreateView {
 
     @Inject
-    lateinit var presenter: CheckerDetailPresenter
+    lateinit var presenter: CheckerCreatePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
