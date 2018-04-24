@@ -46,18 +46,18 @@
 
     <Button
         android:id="@+id/state_button"
-        android:layout_width="92dp"
+        android:layout_width="wrap_content"
         android:layout_height="36dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:background="@drawable/bg_pink_button_ripple"
         android:textColor="@color/whiteText"
-        android:paddingLeft="8dp"
-        android:paddingStart="8dp"
-        android:paddingRight="8dp"
-        android:paddingEnd="8dp"
-        android:text="@string/undone" />
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/done" />
 
 
 </RelativeLayout>

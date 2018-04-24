@@ -21,6 +21,7 @@ import javax.inject.Inject
 import com.avd.checker.domain.model.time_data.lts
 import com.avd.checker.presentation.notification.NotificationHandler
 import com.avd.checker.presentation.service.ApplyService
+import com.avd.checker.presentation.view.checker_change.CheckerChangeActivity
 
 
 /**
@@ -88,7 +89,7 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
     }
 
     override fun onChangeRequest() {
-        val intent = Intent(this, CheckerCreateActivity::class.java)
+        val intent = Intent(this, CheckerChangeActivity::class.java)
         startActivity(intent)
     }
 
