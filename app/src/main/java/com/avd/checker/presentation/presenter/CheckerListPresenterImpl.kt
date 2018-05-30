@@ -42,7 +42,7 @@ class CheckerListPresenterImpl @Inject constructor(val interactor: CheckerListIn
     }
 
     override fun onCheckerClick(checker: CheckerModel) {
-        view?.onChangeRequest()
+        view?.onChangeRequest(checker)
     }
 
     override fun onStateButtonClick(checker: CheckerModel) {

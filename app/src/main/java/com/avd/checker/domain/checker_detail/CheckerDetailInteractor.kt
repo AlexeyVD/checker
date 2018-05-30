@@ -12,5 +12,5 @@ interface CheckerDetailInteractor {
     /**
      * Creates new checker
      */
-    fun createChecker(title: String, period: String)
+    fun createChecker(title: String, period: Int)
 }

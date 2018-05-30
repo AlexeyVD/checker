@@ -11,6 +11,7 @@
     <string name="done_state">ВЫПОЛНЕНО</string>
 
     <string-array name="periods">
+        <item>Минута</item>
         <item>Час</item>
         <item>День</item>
         <item>Неделя</item>

@@ -12,6 +12,6 @@ interface CheckerListView {
     fun hideCreateButton()
     fun showCreateButton()
     fun onCreateRequest()
-    fun onChangeRequest()
+    fun onChangeRequest(checker: CheckerModel)
     fun onCheckerChanged(checker: CheckerModel)
 }

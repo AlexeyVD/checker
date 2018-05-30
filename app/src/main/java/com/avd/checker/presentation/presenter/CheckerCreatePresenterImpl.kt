@@ -14,7 +14,7 @@ import javax.inject.Inject
 class CheckerCreatePresenterImpl @Inject constructor(val interactor: CheckerDetailInteractor) :
         BasePresenter<CheckerCreateView>(), CheckerCreatePresenter {
 
-    override fun createChecker(title: String, period: String) {
+    override fun createChecker(title: String, period: Int) {
         interactor.createChecker(title, period)
         view?.close()
     }

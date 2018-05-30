@@ -9,6 +9,7 @@ import com.avd.checker.domain.model.time_data.TimeData.Companion.INTERVAL_WEEK
 import com.avd.checker.domain.model.time_data.TimeData.Companion.MINUTE
 import com.avd.checker.domain.model.time_data.TimeData.Companion.MONTH
 import com.avd.checker.domain.model.time_data.TimeData.Companion.WEEK
+import com.avd.checker.domain.model.time_data.TimeData.Companion.YEAR
 import java.util.*
 
 /**
@@ -34,7 +35,20 @@ fun Calendar.resetTime() {
     set(Calendar.MILLISECOND, 0)
 }
 
-fun createTimeData(period: String): TimeData = getTimeData(HOUR)
+fun createTimeData(period: Int): TimeData {
+
+    //FIXME fix period hardcode
+    val interval = when (period) {
+        0 -> MINUTE
+        1 -> HOUR
+        2 -> DAY
+        3 -> WEEK
+        4 -> MONTH
+        else -> throw RuntimeException("Unsupported type of time data")
+    }
+
+    return getTimeData(interval)
+}
 
 fun lts() = System.currentTimeMillis()
 

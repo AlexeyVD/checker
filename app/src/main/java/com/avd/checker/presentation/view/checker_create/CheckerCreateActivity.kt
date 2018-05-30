@@ -73,11 +73,11 @@ class CheckerCreateActivity : BaseActivity(), CheckerCreateView {
         when (item?.itemId) {
             R.id.action_check -> {
                 presenter.createChecker(title_input.text.toString(),
-                        getStringArrayItem(R.array.periods, period_selector.selectedItemId.toInt()))
+                        period_selector.selectedItemId.toInt())
             }
             else -> return super.onOptionsItemSelected(item)
         }
-        return  true
+        return true
     }
 
     override fun onBackPressed() {
