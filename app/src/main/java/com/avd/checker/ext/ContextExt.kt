@@ -10,3 +10,12 @@ import com.avd.checker.CheckerApp
 fun Context.getApp() = applicationContext as CheckerApp
 
 fun Context.getStringArrayItem(id: Int, itemId: Int) = resources.getStringArray(id)[itemId]
+
+/**
+ * @return value from string resources by [key]
+ */
+fun Context.getStringByKey(key: String): String {
+    val id = resources.getIdentifier(key, "string", packageName)
+    if (id == 0) return key
+    return getString(id)
+}

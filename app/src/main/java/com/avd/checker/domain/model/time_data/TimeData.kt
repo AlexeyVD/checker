@@ -14,6 +14,13 @@ interface TimeData {
         const val MONTH = 5
         const val YEAR = 6
 
+        const val MINUTE_TAG = "minute"
+        const val HOUR_TAG = "hour"
+        const val DAY_TAG = "day"
+        const val WEEK_TAG = "week"
+        const val MONTH_TAG = "month"
+        const val YEAR_TAG = "year"
+
         const val INTERVAL_MINUTE: Long = 60_000
         const val INTERVAL_HOUR: Long = INTERVAL_MINUTE * 60
         const val INTERVAL_DAY: Long = INTERVAL_HOUR * 24
@@ -46,4 +53,19 @@ interface TimeData {
      * @return type of time data
      */
     fun getType(): Int
+
+    /**
+     * @return string tag of time data by type
+     */
+    fun getTag(): String {
+        val type = getType()
+        return when (type) {
+            MINUTE -> MINUTE_TAG
+            HOUR -> HOUR_TAG
+            DAY -> DAY_TAG
+            WEEK -> WEEK_TAG
+            MONTH -> MONTH_TAG
+            else -> throw RuntimeException("Unsupported type of time data")
+        }
+    }
 }

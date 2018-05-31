@@ -8,7 +8,7 @@ import com.avd.checker.domain.model.CheckerModel
 
 interface CheckerListView {
     fun setItems(items: List<CheckerModel>)
-    fun addItem(item: CheckerModel)
+    fun updateItems(items: List<CheckerModel>)
     fun hideCreateButton()
     fun showCreateButton()
     fun onCreateRequest()

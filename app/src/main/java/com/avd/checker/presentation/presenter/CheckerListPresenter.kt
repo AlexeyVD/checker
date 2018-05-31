@@ -21,6 +21,11 @@ interface CheckerListPresenter : Presenter<CheckerListView> {
     fun onStop()
 
     /**
+     * Updates app data
+     */
+    fun onUpdate(lts: Long)
+
+    /**
      * Handles click on creating button
      */
     fun onCreateButtonClick()

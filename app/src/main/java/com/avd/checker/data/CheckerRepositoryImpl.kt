@@ -22,24 +22,10 @@ class CheckerRepositoryImpl @Inject constructor(val dataSource: DataSource<Check
 
     override fun createChecker(checker: CheckerModel) {
         dataSource.put(checker)
-        notifyCheckerChanged(checker)
     }
 
     override fun putChecker(checker: CheckerModel) {
         dataSource.put(checker)
-    }
-
-    override fun subscribeCheckers(): Flowable<CheckerModel> {
-        return Flowable.create({ mEmitter = it }, BackpressureStrategy.DROP)
-    }
-
-    override fun unsubscribeCheckers() {
-        mEmitter?.onComplete()
-        mEmitter = null
-    }
-
-    private fun notifyCheckerChanged(checker: CheckerModel) {
-        mEmitter?.onNext(checker)
     }
 
     override fun init() = dataSource.init()

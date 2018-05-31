@@ -22,19 +22,26 @@ class CheckerListPresenterImpl @Inject constructor(val interactor: CheckerListIn
     }
 
     private val items = HashMap<Long, CheckerModel>()
-    private var checkersSub: Disposable? = null
 
     override fun onStart(lts: Long) {
         interactor.init()
                 .subscribe({ addCheckers(lts) }, { Log.e(TAG, it.message) })
-        subscribeCheckers()
     }
 
     override fun onStop() {
         detachView()
-        checkersSub?.dispose()
-        checkersSub = null
-        interactor.unsubscribeCheckers()
+    }
+
+    override fun onUpdate(lts: Long) {
+        val checkers = interactor.getCheckers(lts)
+
+        if (checkers.isEmpty()) {
+            view?.showCreateButton()
+        } else {
+            checkers.forEach { items[it.id] = it }
+            view?.hideCreateButton()
+            view?.updateItems(checkers)
+        }
     }
 
     override fun onCreateButtonClick() {
@@ -49,17 +56,6 @@ class CheckerListPresenterImpl @Inject constructor(val interactor: CheckerListIn
         val item = interactor.changeCheckerState(checker)
         items[item.id] = item
         view?.onCheckerChanged(item)
-    }
-
-    private fun subscribeCheckers() {
-        checkersSub = interactor.subscribeCheckers()
-                .subscribe({
-                    if (items.isEmpty()) {
-                        view?.hideCreateButton()
-                    }
-                    items[it.id] = it
-                    view?.addItem(it)
-                }, { Log.e(TAG, it.message) })
     }
 
     private fun addCheckers(lts: Long) {

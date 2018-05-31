@@ -32,16 +32,6 @@ interface CheckerRepository {
     fun putChecker(checker: CheckerModel)
 
     /**
-     * Subscribes checkers changing
-     */
-    fun subscribeCheckers(): Flowable<CheckerModel>
-
-    /**
-     * Unsubscribes checkers changing
-     */
-    fun unsubscribeCheckers()
-
-    /**
      * Init data source
      */
     fun init(): Completable

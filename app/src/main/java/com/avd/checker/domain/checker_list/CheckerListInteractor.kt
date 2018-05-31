@@ -22,16 +22,6 @@ interface CheckerListInteractor {
     fun getCheckers(lts: Long): List<CheckerModel>
 
     /**
-     * @return Flowable that emits [CheckerModel] checker, when it is created or updated
-     */
-    fun subscribeCheckers(): Flowable<CheckerModel>
-
-    /**
-     * Remove subscription of [CheckerModel] checkers changing
-     */
-    fun unsubscribeCheckers()
-
-    /**
      * Changes [checker] isChecked state
      * @return updated [checker]
      */

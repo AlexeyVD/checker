@@ -32,7 +32,7 @@
             android:textSize="18sp"/>
 
         <TextView
-            android:id="@+id/remaining"
+            android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/descriptionText"
@@ -58,6 +58,19 @@
         android:paddingRight="16dp"
         android:paddingEnd="16dp"
         android:text="@string/done" />
+
+    <TextView
+        android:id="@+id/done_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/whiteText"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/done_state"
+        android:textSize="14sp"
+        android:visibility="gone"/>
 
 
 </RelativeLayout>

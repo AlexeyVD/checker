@@ -10,6 +10,13 @@
 
     <string name="done_state">ВЫПОЛНЕНО</string>
 
+    <string name="description_minute">каждую минуту</string>
+    <string name="description_hour">каждый час</string>
+    <string name="description_day">каждый день</string>
+    <string name="description_week">каждую неделю</string>
+    <string name="description_month">каждый месяц</string>
+    <string name="description_year">каждый год</string>
+
     <string-array name="periods">
         <item>Минута</item>
         <item>Час</item>

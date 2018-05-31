@@ -39,6 +39,8 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
     @Inject
     lateinit var notificationHandler: NotificationHandler
 
+    private var isStarted = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
@@ -62,8 +64,8 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
         adapter.setElements(items)
     }
 
-    override fun addItem(item: CheckerModel) {
-        adapter.addElement(item)
+    override fun updateItems(items: List<CheckerModel>) {
+        adapter.update(items)
     }
 
     override fun hideCreateButton() {
@@ -100,7 +102,17 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
     }
 
     override fun onCheckerChanged(checker: CheckerModel) {
-        adapter.addElement(checker)
+        adapter.updateElement(checker)
+    }
+
+    override fun onStart() {
+
+        if (isStarted) {
+            presenter.onUpdate(lts())
+        } else {
+            isStarted = true
+        }
+        super.onStart()
     }
 
     override fun onStop() {

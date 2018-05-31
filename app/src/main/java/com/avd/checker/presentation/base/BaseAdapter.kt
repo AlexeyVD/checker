@@ -19,17 +19,7 @@ import com.avd.checker.ext.replaceIf
 abstract class BaseAdapter<T : Model, VH : BaseViewHolder<T>>(val context: Context) :
         RecyclerView.Adapter<VH>() {
 
-    companion object {
-        const val NO_ANIMATION = -1
-    }
-
-    private val elements = ArrayList<T>()
-    private var itemAnimation: Animation? = null
-    private var isNewItemInserted = false
-
-    init {
-        initAnimation()
-    }
+    protected val elements = ArrayList<T>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
 
@@ -40,10 +30,9 @@ abstract class BaseAdapter<T : Model, VH : BaseViewHolder<T>>(val context: Conte
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.bind(elements[position])
-        animateItem(holder.itemView, position)
     }
 
-    override fun getItemCount()= elements.size
+    override fun getItemCount() = elements.size
 
     /**
      * Clears elements list and adds all [elements] to adapter
@@ -55,9 +44,9 @@ abstract class BaseAdapter<T : Model, VH : BaseViewHolder<T>>(val context: Conte
     }
 
     /**
-     * Add new [item] to [elements] or replaces it if exists
+     * Updates [item] in [elements]
      */
-    fun addElement(item: T) {
+    fun updateElement(item: T) {
 
         var position = 0
 
@@ -71,30 +60,9 @@ abstract class BaseAdapter<T : Model, VH : BaseViewHolder<T>>(val context: Conte
             }
             position++
         }
-        iterator.add(item)
-        isNewItemInserted = true
-        notifyItemInserted(elements.size - 1)
     }
 
     protected abstract fun getItemLayoutId(): Int
 
     protected abstract fun getViewHolder(itemView: View): VH
-
-    protected open fun getAnimationId(): Int = NO_ANIMATION
-
-    private fun initAnimation() {
-        val animationId = getAnimationId()
-        if (animationId == NO_ANIMATION) return
-        itemAnimation = AnimationUtils.loadAnimation(context, animationId)
-    }
-
-    private fun animateItem(view: View, position: Int) {
-        if (itemAnimation == null || position < elements.size - 1)
-            return
-
-        if (isNewItemInserted) {
-            view.startAnimation(itemAnimation)
-            isNewItemInserted = false
-        }
-    }
 }
