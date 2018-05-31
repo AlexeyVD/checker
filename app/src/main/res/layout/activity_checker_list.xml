@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/divider"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/divider">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -14,54 +13,61 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary" />
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler"
+    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:layoutAnimation="@anim/layout_fall_down_anim"
-        android:paddingTop="24dp"
-        android:paddingLeft="16dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="80dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:visibility="gone"/>
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <Button
-        android:id="@+id/create_button"
-        android:layout_width="wrap_content"
-        android:layout_height="36dp"
-        android:textColor="@color/whiteText"
-        android:paddingLeft="16dp"
-        android:paddingStart="16dp"
-        android:paddingRight="16dp"
-        android:paddingEnd="16dp"
-        android:layout_gravity="center"
-        android:background="@drawable/bg_yellow_button_ripple"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:text="СОЗДАТЬ ЧЕКЕР"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:layoutAnimation="@anim/layout_fall_down_anim"
+            android:paddingBottom="80dp"
+            android:paddingEnd="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingStart="16dp"
+            android:paddingTop="24dp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/create_button"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:background="@drawable/bg_yellow_button_ripple"
+            android:paddingEnd="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingStart="16dp"
+            android:text="@string/create_checker"
+            android:textColor="@color/whiteText" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floating_create_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:src="@drawable/ic_add_white_24dp"
-        app:rippleColor="@color/lightAccent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp"
-        android:visibility="gone"/>
+        android:src="@drawable/ic_add_white_24dp"
+        android:visibility="gone"
+        app:rippleColor="@color/lightAccent" />
 
 </android.support.design.widget.CoordinatorLayout>

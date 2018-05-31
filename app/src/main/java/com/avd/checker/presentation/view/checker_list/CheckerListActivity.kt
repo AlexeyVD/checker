@@ -48,9 +48,10 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
         getApp().getComponentsHolder()
                 .getCheckersComponent()
                 .inject(this)
+        initPresenter()
         initRecycler()
         initButtons()
-        initPresenter()
+        initSwipe()
     }
 
     override fun getLayoutId() = R.layout.activity_checker_list
@@ -65,6 +66,7 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
     }
 
     override fun updateItems(items: List<CheckerModel>) {
+        swipe_container.isRefreshing = false
         adapter.update(items)
     }
 
@@ -76,6 +78,7 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
     }
 
     override fun showCreateButton() {
+        swipe_container.isRefreshing = false
         TransitionManager.beginDelayedTransition(root_layout, Fade())
         recycler.gone()
         floating_create_button.gone()
@@ -139,6 +142,11 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
         floating_create_button.setOnClickListener({
             onCreateRequest()
         })
+    }
+
+    private fun initSwipe() {
+        swipe_container.setColorSchemeResources(R.color.accent)
+        swipe_container.setOnRefreshListener { presenter.onUpdate(lts()) }
     }
 
     private fun initRecycler() {
