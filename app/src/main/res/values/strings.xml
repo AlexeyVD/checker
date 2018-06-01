@@ -9,6 +9,7 @@
     <string name="undone">ОТМЕНА</string>
 
     <string name="done_state">ВЫПОЛНЕНО</string>
+    <string name="done_state_lower">Выполнено</string>
 
     <string name="description_minute">каждую минуту</string>
     <string name="description_hour">каждый час</string>
@@ -17,6 +18,12 @@
     <string name="description_month">каждый месяц</string>
     <string name="description_year">каждый год</string>
     <string name="create_checker">СОЗДАТЬ ЧЕКЕР</string>
+    <string name="title">Название</string>
+    <string name="remove">Удалить</string>
+    <string name="edit_checker">Редактировать чекер</string>
+    <string name="apply_delete">Удалить этот чекер?</string>
+    <string name="delete_upper">УДАЛИТЬ</string>
+    <string name="cancel_upper">ОТМЕНА</string>
 
     <string-array name="periods">
         <item>Минута</item>

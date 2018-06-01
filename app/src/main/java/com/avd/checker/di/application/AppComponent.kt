@@ -1,6 +1,7 @@
 package com.avd.checker.di.application
 
 import android.content.Context
+import com.avd.checker.di.checkers.CheckerChangeComponent
 import com.avd.checker.di.checkers.CheckersComponent
 import dagger.BindsInstance
 import dagger.Component
@@ -24,4 +25,6 @@ interface AppComponent {
     }
 
     fun checkersComponentBuilder(): CheckersComponent.Builder
+
+    fun checkerChangeComponentBuilder(): CheckerChangeComponent.Builder
 }

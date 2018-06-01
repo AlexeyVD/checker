@@ -13,6 +13,7 @@
     <color name="whiteText">#FFFFFF</color>
 
     <color name="divider">#F1F1F1</color>
+    <color name="divider_dark">#6D6D6D</color>
 
     <color name="green">#558B2F</color>
     <color name="lightGreen">#9CCC65</color>

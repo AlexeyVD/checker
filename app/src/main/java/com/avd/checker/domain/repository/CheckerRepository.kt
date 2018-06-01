@@ -19,17 +19,22 @@ interface CheckerRepository {
     /**
      * @return list of existing [CheckerModel] checkers
      */
-    fun getCheckers(): List<CheckerModel>
+    fun getAll(): List<CheckerModel>
 
     /**
      * Creates new checker
      */
-    fun createChecker(checker: CheckerModel)
+    fun create(checker: CheckerModel)
 
     /**
      * Puts checker to repository or replaces it if exists
      */
-    fun putChecker(checker: CheckerModel)
+    fun put(checker: CheckerModel)
+
+    /**
+     * Deletes checker from repository by [id]
+     */
+    fun delete(id: Long)
 
     /**
      * Init data source

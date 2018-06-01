@@ -9,7 +9,7 @@ import dagger.Subcomponent
  * Created by Aleksey Dementyev on 11.11.2017.
  */
 
-@Subcomponent(modules = arrayOf(CheckersModule::class))
+@Subcomponent(modules = [(CheckersModule::class)])
 @CheckerListScope
 interface CheckersComponent {
 

@@ -9,6 +9,7 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import com.avd.checker.R
+import com.avd.checker.domain.model.CheckerDto
 import com.avd.checker.domain.model.CheckerModel
 import com.avd.checker.domain.model.time_data.TimeData
 import com.avd.checker.ext.getApp
@@ -97,9 +98,7 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
     override fun onChangeRequest(checker: CheckerModel) {
         val intent = Intent(this, CheckerChangeActivity::class.java)
         val bundle = Bundle()
-        bundle.putString(CheckerChangeActivity.TITLE, checker.title)
-        bundle.putInt(CheckerChangeActivity.PERIOD,
-                getPeriodByTimeInterval(checker.timeData.getType()))
+        bundle.putParcelable(CheckerChangeActivity.CHECKER, CheckerDto(checker))
         intent.putExtras(bundle)
         startActivity(intent)
     }
@@ -168,15 +167,4 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
             presenter.onStateButtonClick(item)
         }
     })
-
-    private fun getPeriodByTimeInterval(type: Int): Int {
-        return when (type) {
-            TimeData.MINUTE -> 0
-            TimeData.HOUR -> 1
-            TimeData.DAY -> 2
-            TimeData.WEEK -> 3
-            TimeData.MONTH -> 4
-            else -> 0
-        }
-    }
 }

@@ -1,6 +1,9 @@
 package com.avd.checker.presentation.view.checker_change
 
+import com.avd.checker.domain.model.CheckerDto
+
 interface CheckerChangeView {
-    fun onChanged()
-    fun onDeleted()
+    fun setData(checker: CheckerDto)
+    fun showDeleteDialog()
+    fun onDeleteEvent()
 }

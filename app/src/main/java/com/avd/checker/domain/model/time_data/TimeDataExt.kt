@@ -62,3 +62,25 @@ fun getTimeData(type: Int): TimeData {
         else -> throw RuntimeException("Unsupported type of time data")
     }
 }
+
+fun getSelectionId(type: Int): Int {
+    return when (type) {
+        TimeData.MINUTE -> 0
+        TimeData.HOUR -> 1
+        TimeData.DAY -> 2
+        TimeData.WEEK -> 3
+        TimeData.MONTH -> 4
+        else -> 0
+    }
+}
+
+fun getTimeDataBySelection(selectionId: Int): Int {
+    return when (selectionId) {
+        0 -> MINUTE
+        1 -> HOUR
+        2 -> DAY
+        3 -> WEEK
+        4 -> MONTH
+        else -> throw RuntimeException("Unsupported type of time data")
+    }
+}

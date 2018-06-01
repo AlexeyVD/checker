@@ -14,18 +14,20 @@ import javax.inject.Singleton
 class CheckerRepositoryImpl @Inject constructor(val dataSource: DataSource<CheckerModel>) :
         CheckerRepository {
 
-    private var mEmitter: FlowableEmitter<CheckerModel>? = null
-
     override fun generateId() = dataSource.generateId()
 
-    override fun getCheckers() = dataSource.getAll()
+    override fun getAll() = dataSource.getAll()
 
-    override fun createChecker(checker: CheckerModel) {
+    override fun create(checker: CheckerModel) {
         dataSource.put(checker)
     }
 
-    override fun putChecker(checker: CheckerModel) {
+    override fun put(checker: CheckerModel) {
         dataSource.put(checker)
+    }
+
+    override fun delete(id: Long) {
+        dataSource.remove(id)
     }
 
     override fun init() = dataSource.init()
