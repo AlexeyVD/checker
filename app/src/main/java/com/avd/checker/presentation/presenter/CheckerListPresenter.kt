@@ -39,4 +39,9 @@ interface CheckerListPresenter : Presenter<CheckerListView> {
      * Handles click on state button
      */
     fun onStateButtonClick(checker: CheckerModel)
+
+    /**
+     * Handles click on settings button
+     */
+    fun onSettingsButtonClick()
 }

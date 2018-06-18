@@ -4,22 +4,19 @@ import java.util.*
 import java.util.Calendar.*
 
 /**
- * Created by Aleksey Dementyev on 25.03.2018.
+ * Created by Aleksey Dementyev on 09.06.2018.
  */
 
-/**
- * [TimeData] implementation for MONTH time unit
- */
-class MonthTimeData : TimeData {
-
+class YearTimeData : TimeData {
     override fun isExpired(prevLts: Long, lts: Long) =
-            getUnitValueByLts(prevLts, MONTH) != getUnitValueByLts(lts, MONTH)
+            getUnitValueByLts(prevLts, YEAR) != getUnitValueByLts(lts, YEAR)
 
     override fun getTimeRemaining(lts: Long): Long {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = lts
-        calendar.add(MONTH, 1)
-        calendar.set(DATE, calendar.getActualMinimum(DATE))
+        calendar.add(Calendar.YEAR, 1)
+        calendar.set(Calendar.MONTH, calendar.getActualMinimum(MONTH))
+        calendar.set(Calendar.DATE, calendar.getActualMinimum(DATE))
         calendar.resetTime()
         return calendar.timeInMillis - lts
     }
@@ -27,7 +24,8 @@ class MonthTimeData : TimeData {
     override fun getPrevTimeUnitLts(lts: Long): Long {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = lts
-        calendar.set(DATE, calendar.getActualMinimum(DATE))
+        calendar.set(Calendar.MONTH, calendar.getActualMinimum(MONTH))
+        calendar.set(Calendar.DATE, calendar.getActualMinimum(DATE))
         calendar.resetTime()
 
         return calendar.timeInMillis
@@ -35,5 +33,5 @@ class MonthTimeData : TimeData {
 
     override fun getNextTimeUnitLts(lts: Long) = lts + getTimeRemaining(lts)
 
-    override fun getType() = TimeData.MONTH
+    override fun getType() = TimeData.YEAR
 }

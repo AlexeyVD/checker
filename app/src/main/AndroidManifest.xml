@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.avd.checker">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".CheckerApp"
         android:allowBackup="true"
@@ -19,6 +21,11 @@
         </activity>
         <activity android:name=".presentation.view.checker_create.CheckerCreateActivity"/>
         <activity android:name=".presentation.view.checker_change.CheckerChangeActivity" />
+        <activity android:name=".presentation.view.settings.SettingsActivity" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="" />
 
         <service android:name=".presentation.service.ApplyService" />
     </application>

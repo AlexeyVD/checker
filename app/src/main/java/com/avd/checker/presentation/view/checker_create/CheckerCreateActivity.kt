@@ -8,7 +8,6 @@ import android.view.inputmethod.EditorInfo
 import com.avd.checker.R
 import com.avd.checker.ext.closeKeyboard
 import com.avd.checker.ext.getApp
-import com.avd.checker.ext.getStringArrayItem
 import com.avd.checker.presentation.base.BaseActivity
 import com.avd.checker.presentation.presenter.CheckerCreatePresenter
 import kotlinx.android.synthetic.main.activity_checker_detail.*
@@ -40,7 +39,7 @@ class CheckerCreateActivity : BaseActivity(), CheckerCreateView {
     }
 
     private fun initToolbar(actionBar: ActionBar) {
-        actionBar.title = "Создать чекер"
+        actionBar.title = getString(R.string.create_checker_lower)
         actionBar.setDisplayHomeAsUpEnabled(true)
         actionBar.setDisplayShowHomeEnabled(true)
     }

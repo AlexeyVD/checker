@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">checker</string>
+    <string name="app_name">Чекер</string>
     <string name="settings_item">settings_item</string>
     <string name="check_item">check_item</string>
     <string name="periodDescription">Период повторения события</string>
@@ -12,7 +12,11 @@
     <string name="done_state_lower">Выполнено</string>
 
     <string name="description_minute">каждую минуту</string>
+    <string name="description_half_hour">каждые 30 минут</string>
     <string name="description_hour">каждый час</string>
+    <string name="description_two_hours">каждые 2 часа</string>
+    <string name="description_four_hours">каждые 4 часа</string>
+    <string name="description_twelve_hours">каждые 12 часов</string>
     <string name="description_day">каждый день</string>
     <string name="description_week">каждую неделю</string>
     <string name="description_month">каждый месяц</string>
@@ -24,13 +28,22 @@
     <string name="apply_delete">Удалить этот чекер?</string>
     <string name="delete_upper">УДАЛИТЬ</string>
     <string name="cancel_upper">ОТМЕНА</string>
+    <string name="email">alexeyvddev@gmail.com</string>
+    <string name="developer">Разработчик: avddev</string>
+    <string name="create_checker_lower">Создать чекер</string>
+    <string name="settings">Настройки</string>
 
     <string-array name="periods">
         <item>Минута</item>
-        <item>Час</item>
+        <item>30 минут</item>
+        <item>1 час</item>
+        <item>2 часа</item>
+        <item>4 часа</item>
+        <item>12 часов</item>
         <item>День</item>
         <item>Неделя</item>
         <item>Месяц</item>
+        <item>Год</item>
     </string-array>
 
 </resources>

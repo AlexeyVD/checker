@@ -39,7 +39,8 @@ class CheckerViewHolder(itemView: View, private val listener: OnCheckerClickList
             itemView.check_title.setTextColorId(R.color.whiteText)
             itemView.description.setTextColorId(R.color.whiteText)
             itemView.done_state.visible()
-            itemView.state_button.gone()
+            itemView.state_button.invisible()
+            itemView.state_button.isEnabled = false
             itemView.setBackgroundDrawableId(R.drawable.bg_green_button_ripple)
         }
         else {
@@ -47,6 +48,7 @@ class CheckerViewHolder(itemView: View, private val listener: OnCheckerClickList
             itemView.description.setTextColorId(R.color.descriptionText)
             itemView.done_state.gone()
             itemView.state_button.visible()
+            itemView.state_button.isEnabled = true
             itemView.state_button.text = itemView.context.getString(R.string.done)
             itemView.setBackgroundDrawableId(R.drawable.bg_list_item_ripple)
         }

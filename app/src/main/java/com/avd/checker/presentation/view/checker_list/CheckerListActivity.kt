@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
+import android.view.MenuItem
 import com.avd.checker.R
 import com.avd.checker.domain.model.CheckerDto
 import com.avd.checker.domain.model.CheckerModel
@@ -24,6 +25,7 @@ import com.avd.checker.domain.model.time_data.lts
 import com.avd.checker.presentation.notification.NotificationHandler
 import com.avd.checker.presentation.service.ApplyService
 import com.avd.checker.presentation.view.checker_change.CheckerChangeActivity
+import com.avd.checker.presentation.view.settings.SettingsActivity
 
 
 /**
@@ -45,7 +47,7 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Checker"
+        supportActionBar?.title = getString(R.string.app_name)
         getApp().getComponentsHolder()
                 .getCheckersComponent()
                 .inject(this)
@@ -60,6 +62,14 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.checker_list_menu, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == R.id.action_settings) {
+            presenter.onSettingsButtonClick()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun setItems(items: List<CheckerModel>) {
@@ -105,6 +115,11 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
 
     override fun onCheckerChanged(checker: CheckerModel) {
         adapter.updateElement(checker)
+    }
+
+    override fun onSettingsButtonPressed() {
+        val intent = Intent(this, SettingsActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onStart() {

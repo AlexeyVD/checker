@@ -58,6 +58,10 @@ class CheckerListPresenterImpl @Inject constructor(val interactor: CheckerListIn
         view?.onCheckerChanged(item)
     }
 
+    override fun onSettingsButtonClick() {
+        view?.onSettingsButtonPressed()
+    }
+
     private fun addCheckers(lts: Long) {
         val checkers = interactor.getCheckers(lts)
 

@@ -2,25 +2,24 @@ package com.avd.checker.domain.model.time_data
 
 import org.amshove.kluent.shouldEqual
 import org.junit.Assert.*
-import org.junit.Before
 import org.junit.BeforeClass
 import org.junit.Test
 import java.util.*
 
 /**
- * Created by Aleksey Dementyev on 25.03.2018.
+ * Created by Aleksey Dementyev on 09.06.2018.
  */
-class MonthTimeDataTest {
+class YearTimeDataTest {
 
     companion object {
-        lateinit var timeData: MonthTimeData
+        lateinit var timeData: YearTimeData
         lateinit var prevCalendar: Calendar
         lateinit var newCalendar: Calendar
 
         @BeforeClass
         @JvmStatic
         fun setup() {
-            timeData = MonthTimeData()
+            timeData = YearTimeData()
             prevCalendar = Calendar.getInstance()
             newCalendar = Calendar.getInstance()
             prevCalendar.resetTime()
@@ -29,15 +28,15 @@ class MonthTimeDataTest {
     }
 
     @Test
-    fun isExpiredNextMonth() {
-        prevCalendar.set(2017, 11, 28)
+    fun isExpiredNextYear() {
+        prevCalendar.set(2016, 11, 28)
         newCalendar.set(2017, 12, 1)
         timeData.isExpired(prevCalendar.timeInMillis, newCalendar.timeInMillis) shouldEqual true
     }
 
     @Test
-    fun isExpiredOtherMonth() {
-        prevCalendar.set(2017, 11, 28)
+    fun isExpiredOtherYear() {
+        prevCalendar.set(2015, 11, 28)
         newCalendar.set(2018, 0, 6)
         timeData.isExpired(prevCalendar.timeInMillis, newCalendar.timeInMillis) shouldEqual true
     }
@@ -59,7 +58,8 @@ class MonthTimeDataTest {
     fun getPrevTimeUnitLts() {
         prevCalendar.set(2018, 3, 21)
         val expected = Calendar.getInstance()
-        expected.set(2018, 3, expected.getActualMinimum(Calendar.DATE))
+        expected.set(2018, expected.getActualMinimum(Calendar.MONTH),
+                expected.getActualMinimum(Calendar.DATE))
         expected.resetTime()
 
         timeData.getPrevTimeUnitLts(prevCalendar.timeInMillis) shouldEqual expected.timeInMillis
