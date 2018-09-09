@@ -53,9 +53,8 @@ class CheckerChangeActivity : BaseActivity(), CheckerChangeView {
     override fun showDeleteDialog() {
         AlertDialog.Builder(this)
                 .setMessage(getString(R.string.apply_delete))
-                .setPositiveButton(getString(R.string.delete_upper),
-                        { _, _ -> presenter.delete() })
-                .setNegativeButton(getString(R.string.cancel_upper), { _, _ ->  })
+                .setPositiveButton(getString(R.string.delete_upper)) { _, _ -> presenter.delete() }
+                .setNegativeButton(getString(R.string.cancel_upper)) { _, _ ->  }
                 .create()
                 .show()
     }
@@ -98,7 +97,7 @@ class CheckerChangeActivity : BaseActivity(), CheckerChangeView {
     }
 
     private fun initInputs() {
-        title_input.setOnEditorActionListener({ _, actionId, _ ->
+        title_input.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 title_input.clearFocus()
                 title_input.closeKeyboard()
@@ -106,10 +105,11 @@ class CheckerChangeActivity : BaseActivity(), CheckerChangeView {
             } else {
                 false
             }
-        })
+        }
     }
 
     private fun apply() {
+        title_input.closeKeyboard()
         presenter.apply(title_input.text.toString(),
                 getTimeDataBySelection(period_selector.selectedItemId.toInt()),
                 state_check_box.isChecked)

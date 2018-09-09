@@ -149,13 +149,13 @@ class CheckerListActivity : BaseActivity(), CheckerListView {
     }
 
     private fun initButtons() {
-        create_button.setOnClickListener({
+        create_button.setOnClickListener {
             onCreateRequest()
-        })
+        }
 
-        floating_create_button.setOnClickListener({
+        floating_create_button.setOnClickListener {
             onCreateRequest()
-        })
+        }
     }
 
     private fun initSwipe() {

@@ -1,49 +1,49 @@
 <resources>
-    <string name="app_name">Чекер</string>
+    <string name="app_name">Checker</string>
     <string name="settings_item">settings_item</string>
     <string name="check_item">check_item</string>
-    <string name="periodDescription">Период повторения события</string>
-    <string name="titleDescription">Например: покормить кота</string>
+    <string name="periodDescription">Repetition period</string>
+    <string name="titleDescription">For example: feed the cat</string>
 
-    <string name="done">ГОТОВО</string>
-    <string name="undone">ОТМЕНА</string>
+    <string name="done">DONE</string>
+    <string name="undone">CANCEL</string>
 
-    <string name="done_state">ВЫПОЛНЕНО</string>
-    <string name="done_state_lower">Выполнено</string>
+    <string name="done_state">DONE</string>
+    <string name="done_state_lower">Done</string>
 
-    <string name="description_minute">каждую минуту</string>
-    <string name="description_half_hour">каждые 30 минут</string>
-    <string name="description_hour">каждый час</string>
-    <string name="description_two_hours">каждые 2 часа</string>
-    <string name="description_four_hours">каждые 4 часа</string>
-    <string name="description_twelve_hours">каждые 12 часов</string>
-    <string name="description_day">каждый день</string>
-    <string name="description_week">каждую неделю</string>
-    <string name="description_month">каждый месяц</string>
-    <string name="description_year">каждый год</string>
-    <string name="create_checker">СОЗДАТЬ ЧЕКЕР</string>
-    <string name="title">Название</string>
-    <string name="remove">Удалить</string>
-    <string name="edit_checker">Редактировать чекер</string>
-    <string name="apply_delete">Удалить этот чекер?</string>
-    <string name="delete_upper">УДАЛИТЬ</string>
-    <string name="cancel_upper">ОТМЕНА</string>
+    <string name="description_minute">every minute</string>
+    <string name="description_half_hour">every 30 minutes</string>
+    <string name="description_hour">every hour</string>
+    <string name="description_two_hours">every 2 hours</string>
+    <string name="description_four_hours">every 4 hours</string>
+    <string name="description_twelve_hours">every 12 hours</string>
+    <string name="description_day">every day</string>
+    <string name="description_week">every week</string>
+    <string name="description_month">every month</string>
+    <string name="description_year">every year</string>
+    <string name="create_checker">CREATE CHECKER</string>
+    <string name="title">Title</string>
+    <string name="remove">Remove</string>
+    <string name="edit_checker">Edit checker</string>
+    <string name="apply_delete">Remove this checker?</string>
+    <string name="delete_upper">REMOVE</string>
+    <string name="cancel_upper">CANCEL</string>
     <string name="email">alexeyvddev@gmail.com</string>
-    <string name="developer">Разработчик: avddev</string>
-    <string name="create_checker_lower">Создать чекер</string>
-    <string name="settings">Настройки</string>
+    <string name="developer">Developer: avddev</string>
+    <string name="create_checker_lower">Create checker</string>
+    <string name="settings">Settings</string>
 
     <string-array name="periods">
-        <item>Минута</item>
-        <item>30 минут</item>
-        <item>1 час</item>
-        <item>2 часа</item>
-        <item>4 часа</item>
-        <item>12 часов</item>
-        <item>День</item>
-        <item>Неделя</item>
-        <item>Месяц</item>
-        <item>Год</item>
+        <item>1 minute</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>2 hours</item>
+        <item>4 hours</item>
+        <item>12 hours</item>
+        <item>1 day</item>
+        <item>1 week</item>
+        <item>1 month</item>
+        <item>1 year</item>
     </string-array>
 
 </resources>

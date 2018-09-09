@@ -67,12 +67,16 @@
         android:paddingStart="16dp"
         android:paddingRight="16dp"
         android:paddingEnd="16dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="14sp"
         android:text="@string/done" />
 
     <TextView
         android:id="@+id/done_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="90dp"
+        android:gravity="center_horizontal"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
@@ -80,7 +84,7 @@
         android:fontFamily="@font/roboto_regular"
         android:text="@string/done_state"
         android:textSize="14sp"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
 
 </RelativeLayout>

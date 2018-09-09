@@ -45,7 +45,7 @@ class CheckerCreateActivity : BaseActivity(), CheckerCreateView {
     }
 
     private fun initInputs() {
-        title_input.setOnEditorActionListener({ _, actionId, _ ->
+        title_input.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 title_input.clearFocus()
                 title_input.closeKeyboard()
@@ -53,7 +53,7 @@ class CheckerCreateActivity : BaseActivity(), CheckerCreateView {
             } else {
                 false
             }
-        })
+        }
     }
 
     override fun getLayoutId() = R.layout.activity_checker_detail
@@ -71,6 +71,7 @@ class CheckerCreateActivity : BaseActivity(), CheckerCreateView {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.action_check -> {
+                title_input.closeKeyboard()
                 presenter.createChecker(title_input.text.toString(),
                         period_selector.selectedItemId.toInt())
             }
